@@ -1,10 +1,6 @@
-
 interface IUserContextType {
-    login: (email:string,password:string) => Promise<any>
-    logout: () => boolean
-
+  login: (email: string, password: string) => Promise<any>;
+  logout: () => boolean;
 }
 
-export type {
-    IUserContextType
-}
+export type { IUserContextType };

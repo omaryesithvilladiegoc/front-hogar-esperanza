@@ -9,8 +9,11 @@
 		"lint": "eslint . --ext .ts,.tsx -c .eslintrc.json --fix"
 	},
 	"dependencies": {
+		"@emotion/react": "^11.13.5",
 		"@emotion/styled": "^11.13.5",
 		"@mui/icons-material": "^6.1.8",
+		"@mui/material": "^6.1.8",
+		"@mui/styled-engine-sc": "^6.1.8",
 		"@nextui-org/button": "2.0.38",
 		"@nextui-org/code": "2.0.33",
 		"@nextui-org/input": "2.2.5",

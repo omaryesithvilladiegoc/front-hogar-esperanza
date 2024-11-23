@@ -1,15 +1,17 @@
+"use client";
+
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import styled from "styled-components";
 import { Button } from "@nextui-org/button";
 import { Input, Textarea, Select, SelectItem } from "@nextui-org/react";
 import { Card } from "@nextui-org/react";
-import { Search, Description, Home, Send } from "@mui/icons-material";
-import TitleIcon from '@mui/icons-material/Title';
-import TextFieldsIcon from '@mui/icons-material/TextFields';
-import MessageIcon from '@mui/icons-material/Message';
-import TextFormatIcon from '@mui/icons-material/TextFormat';
-import NewspaperIcon from '@mui/icons-material/Newspaper';
-import ArticleIcon from '@mui/icons-material/Article';
+import { Send } from "@mui/icons-material";
+import TitleIcon from "@mui/icons-material/Title";
+import TextFieldsIcon from "@mui/icons-material/TextFields";
+import MessageIcon from "@mui/icons-material/Message";
+import TextFormatIcon from "@mui/icons-material/TextFormat";
+import NewspaperIcon from "@mui/icons-material/Newspaper";
+import ArticleIcon from "@mui/icons-material/Article";
 
 // Definir tipos para los datos del formulario
 interface FormData {
@@ -26,7 +28,6 @@ const FormContainer = styled.div`
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
   box-sizing: border-box;
   background-color: #f4f7fb;
   border-radius: 10px;
@@ -173,7 +174,9 @@ const CreatePost: React.FC = () => {
     footer: "",
     keywords: [],
   });
-  const [errors, setErrors] = useState<{ [key in keyof FormData]?: string }>({});
+  const [errors, setErrors] = useState<{ [key in keyof FormData]?: string }>(
+    {},
+  );
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Lista de palabras clave relacionadas con el hogar de ancianos
@@ -194,19 +197,28 @@ const CreatePost: React.FC = () => {
     const newErrors: { [key in keyof FormData]?: string } = {};
 
     if (!formData.title.trim()) newErrors.title = "El título es obligatorio";
-    if (!formData.subtitle.trim()) newErrors.subtitle = "El subtítulo es obligatorio";
-    if (!formData.header.trim()) newErrors.header = "El encabezado es obligatorio";
-    if (!formData.mainContent.trim()) newErrors.mainContent = "El contenido principal es obligatorio";
-    if (!formData.footer.trim()) newErrors.footer = "El pie de página es obligatorio";
-    if (formData.keywords.length === 0) newErrors.keywords = "Selecciona al menos una palabra clave";
+    if (!formData.subtitle.trim())
+      newErrors.subtitle = "El subtítulo es obligatorio";
+    if (!formData.header.trim())
+      newErrors.header = "El encabezado es obligatorio";
+    if (!formData.mainContent.trim())
+      newErrors.mainContent = "El contenido principal es obligatorio";
+    if (!formData.footer.trim())
+      newErrors.footer = "El pie de página es obligatorio";
+    if (formData.keywords.length === 0)
+      newErrors.keywords = "Selecciona al menos una palabra clave";
 
     setErrors(newErrors);
+
     return Object.keys(newErrors).length === 0; // Si no hay errores, retornar true
   };
 
   // Manejar cambios en los campos del formulario
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
+
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -216,6 +228,7 @@ const CreatePost: React.FC = () => {
   // Manejar cambios en el select de palabras clave
   const handleSelectChange = (selected: string) => {
     const selectedArray: string[] = [];
+
     selectedArray.push(selected);
     setFormData((prevData) => ({
       ...prevData,
@@ -243,7 +256,7 @@ const CreatePost: React.FC = () => {
   return (
     <FormContainer>
       <Card className=" p-10">
-        <Title style={{padding:'1rem'}}>Crear Nueva Publicación</Title>
+        <Title style={{ padding: "1rem" }}>Crear Nueva Publicación</Title>
         <Form onSubmit={handleSubmit}>
           <FormGrid>
             {/* Form Group 1 - Título, Subtítulo, Encabezado */}
@@ -251,45 +264,62 @@ const CreatePost: React.FC = () => {
               <StyledInput
                 isRequired
                 label="Título"
-                placeholder="Introduce el título de la publicación"
-                type="text"
                 name="title"
+                placeholder="Introduce el título de la publicación"
+                startContent={
+                  <span>
+                    <TitleIcon />{" "}
+                  </span>
+                }
+                type="text"
                 value={formData.title}
                 onChange={handleInputChange}
-                startContent={
-                  <><span> <TitleIcon /> </span></>
-                }
               />
-              {errors.title && <div style={{ color: "red" }}>{errors.title}</div>}
+              {errors.title && (
+                <div style={{ color: "red" }}>{errors.title}</div>
+              )}
 
               <StyledInput
                 isRequired
                 label="Subtítulo"
-                placeholder="Introduce el subtítulo de la publicación"
-                type="text"
                 name="subtitle"
+                placeholder="Introduce el subtítulo de la publicación"
+                startContent={
+                  <>
+                    <span>
+                      {" "}
+                      <TextFormatIcon />{" "}
+                    </span>
+                  </>
+                }
+                type="text"
                 value={formData.subtitle}
                 onChange={handleInputChange}
-                startContent={
-                  <><span> <TextFormatIcon /> </span></>
-                }
               />
-              {errors.subtitle && <div style={{ color: "red" }}>{errors.subtitle}</div>}
+              {errors.subtitle && (
+                <div style={{ color: "red" }}>{errors.subtitle}</div>
+              )}
 
               <StyledInput
                 isRequired
                 label="Encabezado"
-                placeholder="Introduce el encabezado de la publicación"
-                type="text"
                 name="header"
+                placeholder="Introduce el encabezado de la publicación"
+                startContent={
+                  <>
+                    <span>
+                      {" "}
+                      <TextFieldsIcon />{" "}
+                    </span>
+                  </>
+                }
+                type="text"
                 value={formData.header}
                 onChange={handleInputChange}
-                startContent={
-                  <><span> <TextFieldsIcon /> </span></>
-                }
-               
               />
-              {errors.header && <div style={{ color: "red" }}>{errors.header}</div>}
+              {errors.header && (
+                <div style={{ color: "red" }}>{errors.header}</div>
+              )}
             </FormGroup>
 
             {/* Form Group 2 - Contenido Principal y Palabras Clave */}
@@ -297,27 +327,39 @@ const CreatePost: React.FC = () => {
               <StyledTextarea
                 isRequired
                 label="Contenido principal"
+                name="mainContent"
                 placeholder="Introduce el contenido principal de la publicación"
                 rows={5}
                 startContent={
-                  <><span> <NewspaperIcon /> </span></>
+                  <>
+                    <span>
+                      {" "}
+                      <NewspaperIcon />{" "}
+                    </span>
+                  </>
                 }
-                name="mainContent"
                 value={formData.mainContent}
                 onChange={handleInputChange}
               />
-              {errors.mainContent && <div style={{ color: "red" }}>{errors.mainContent}</div>}
+              {errors.mainContent && (
+                <div style={{ color: "red" }}>{errors.mainContent}</div>
+              )}
 
               <StyledSelect
                 isRequired
-                style={{ overflow: 'hidden', width: '20rem' }}
                 label="Palabras clave"
                 placeholder="Selecciona palabras clave relacionadas con el cuidado de ancianos"
                 selectionMode="multiple"
-                onChange={(e) => handleSelectChange(e.target.value)}
                 startContent={
-                  <><span> <MessageIcon /> </span></>
+                  <>
+                    <span>
+                      {" "}
+                      <MessageIcon />{" "}
+                    </span>
+                  </>
                 }
+                style={{ overflow: "hidden", width: "20rem" }}
+                onChange={(e) => handleSelectChange(e.target.value)}
               >
                 {keywordsList.map((keyword) => (
                   <SelectItem key={keyword} value={keyword}>
@@ -325,7 +367,9 @@ const CreatePost: React.FC = () => {
                   </SelectItem>
                 ))}
               </StyledSelect>
-              {errors.keywords && <div style={{ color: "red" }}>{errors.keywords}</div>}
+              {errors.keywords && (
+                <div style={{ color: "red" }}>{errors.keywords}</div>
+              )}
             </FormGroup>
           </FormGrid>
 
@@ -334,21 +378,28 @@ const CreatePost: React.FC = () => {
             <StyledInput
               isRequired
               label="Pie de página"
-              placeholder="Introduce el pie de página o información adicional"
-              type="text"
               name="footer"
+              placeholder="Introduce el pie de página o información adicional"
+              startContent={
+                <>
+                  <span>
+                    {" "}
+                    <ArticleIcon />{" "}
+                  </span>
+                </>
+              }
+              type="text"
               value={formData.footer}
               onChange={handleInputChange}
-              startContent={
-                <><span> <ArticleIcon /> </span></>
-              }
             />
-            {errors.footer && <div style={{ color: "red" }}>{errors.footer}</div>}
+            {errors.footer && (
+              <div style={{ color: "red" }}>{errors.footer}</div>
+            )}
           </FormGroup>
 
           {/* Botón de Envío */}
           <div style={{ textAlign: "right" }}>
-            <SubmitButton color="primary" type="submit" disabled={isSubmitting}>
+            <SubmitButton color="primary" disabled={isSubmitting} type="submit">
               {isSubmitting ? "Enviando..." : "Enviar Publicación"} <Send />
             </SubmitButton>
           </div>
