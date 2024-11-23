@@ -1,7 +1,9 @@
+const URL_FETCH = 'https://back-hogar-esperanza.onrender.com'
+
 export const loginFetch = async (email:string,password:string) => {
 
     try {
-        const response = await fetch('http://localhost:3001/auth', {
+        const response = await fetch(`${URL_FETCH}/auth`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', },
           body: JSON.stringify({ email, password }),
