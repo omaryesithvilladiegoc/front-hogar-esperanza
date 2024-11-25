@@ -7,6 +7,7 @@ import { Providers } from "../providers";
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import NavBarUser from "../components/navBarUser/navBarUser";
+import Footer from "../components/footer";
 
 export const metadata: Metadata = {
   title: {
@@ -47,11 +48,13 @@ export default function RootLayout({
             style={{
               backgroundColor: "rgba(38,113,82,255)",
               paddingTop: "5rem",
+              paddingBottom:'5rem'
             }}
           >
             {" "}
             {children}
           </div>
+          <Footer />
         </Providers>
       </body>
     </html>

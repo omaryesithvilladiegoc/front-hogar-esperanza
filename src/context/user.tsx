@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 import { IUserContextType } from "../interfaces/interfaces";
 import {
   createPostFetch,
+  deletePostByIdFetch,
   getAllPostFetch,
   getPostByIdFetch,
   loginFetch,
@@ -18,6 +19,7 @@ export const UserContext = createContext<IUserContextType>({
   getAllPosts: async () => null,
   uploadImage: async () => null,
   getPostById: async () => null,
+  deletePostById: async () => null
 });
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
@@ -82,6 +84,18 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
+  const deletePostById = async (id: string) => {
+    try {
+      const response = deletePostByIdFetch(id)
+      console.log(response);      
+      return response
+    } catch (error:any) {
+      alert(error.message)
+      throw error
+    }
+  }
+
+
   return (
     <UserContext.Provider
       value={{
@@ -91,6 +105,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
         getAllPosts,
         uploadImage,
         getPostById,
+        deletePostById
       }}
     >
       {children}

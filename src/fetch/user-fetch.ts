@@ -1,7 +1,7 @@
 "use client";
 
-// const URL_FETCH = "http://localhost:3001";
-const URL_FETCH = "https://back-hogar-esperanza.onrender.com";
+const URL_FETCH = "http://localhost:3001";
+// const URL_FETCH = "https://back-hogar-esperanza.onrender.com";
 
 
 import Cookies from "js-cookie";
@@ -59,6 +59,30 @@ export const getAllPostFetch = async () => {
   try {
     const response = await fetch(`${URL_FETCH}/post`, {
       method: "GET", // Método GET para obtener los posts
+      headers: {
+        "Content-Type": "application/json", // Indicamos que es JSON
+      },
+    });
+
+    if (!response.ok) {
+      // Manejo de errores HTTP
+      throw new Error(
+        `Error HTTP: ${response.status} - ${response.statusText}`
+      );
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error al obtener los posts:", error);
+    return null;
+  }
+};
+
+export const deletePostByIdFetch = async (id: string) => {
+  try {
+    const response = await fetch(`${URL_FETCH}/post/${id}`, {
+      method: "DELETE", // Método GET para obtener los posts
       headers: {
         "Content-Type": "application/json", // Indicamos que es JSON
       },

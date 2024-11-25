@@ -3,6 +3,7 @@
 import {
   Avatar,
   Button,
+  Divider,
   Menu,
   MenuItem,
   Stack,
@@ -83,11 +84,13 @@ const NavBarUser: React.FC = () => {
             height: openMenu ? "25rem" : "5rem",
             position: "fixed",
             zIndex: "1000",
+            borderBottom:'.5px solid white',
             backgroundColor: "rgba(38,113,82,.8)",
             overflow: "hidden",
             transition: "height 0.3s ease-in-out", // Asegura una transición suave en el cambio de altura
           }}
         >
+      
           {!matches && (
             <div
               style={{
@@ -95,13 +98,15 @@ const NavBarUser: React.FC = () => {
                 display: "flex",
                 height: "5rem",
                 position: "absolute",
-                justifyContent: "center",
+                justifyContent:'center',
                 alignItems: "center",
                 color: "white",
                 gap: "2rem",
               }}
             >
-              <MenuIcon
+             
+              <div style={{width:'50%', display:'flex', justifyContent:'space-between'}}>
+              <MenuIcon 
                 onClick={() => {
                   setOpenMenu(!openMenu);
                 }}
@@ -118,6 +123,8 @@ const NavBarUser: React.FC = () => {
               >
                 Donaciones
               </Link>
+              </div>
+             
             </div>
           )}
 
@@ -143,7 +150,7 @@ const NavBarUser: React.FC = () => {
             </Link>
             <Link
               style={{
-                backgroundColor: "rgba(10,105,82,255)",
+                backgroundColor: "#164d34",
                 padding: "1rem",
                 borderRadius: "1rem",
                 boxShadow: ".5px .5px .9px .09px black",
@@ -181,6 +188,7 @@ const NavBarUser: React.FC = () => {
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
           </Stack>
+
         </Stack>
       )}
     </>

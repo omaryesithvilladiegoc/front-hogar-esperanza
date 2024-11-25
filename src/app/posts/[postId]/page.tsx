@@ -4,19 +4,32 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
 import { useEffect, useState, useContext } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { UserContext } from "@/src/context/user";
 import { Card } from "@nextui-org/react";
 import { Stack, Typography, Button, useMediaQuery } from "@mui/material";
 import { Post } from "@/src/interfaces/interfaces";
+import SegmentIcon from "@mui/icons-material/Segment";
+import { ArrowCircleLeftOutlined } from "@mui/icons-material";
 
-// Función para dividir el contenido principal en oraciones
-const splitContent = (content: string) => {
+const splitContent = (content: string | undefined) => {
+  if (!content) return null; // Maneja el caso donde el contenido sea undefined
+
   const sentences = content
     .split(".")
     .map((sentence) => sentence.trim())
     .filter((sentence) => sentence.length > 0);
-  return sentences;
+
+  const formattedContent = [];
+  for (let i = 0; i < sentences.length; i++) {
+    formattedContent.push(sentences[i] + ".");
+    if ((i + 1) % 3 === 0) {
+      formattedContent.push(<br key={`break-${i}`} />); // Agrega un salto de línea
+      formattedContent.push(<br key={`break-${i}`} />); // Agrega un salto de línea
+    }
+  }
+
+  return formattedContent;
 };
 
 function BasicGrid() {
@@ -26,6 +39,7 @@ function BasicGrid() {
   const [postFound, setPostFound] = useState<Post>();
   const { getPostById } = useContext(UserContext);
   const matches = useMediaQuery("(min-width:1000px)");
+  const router = useRouter();
 
   const getPostByIdFetch = async (id: string) => {
     try {
@@ -57,13 +71,40 @@ function BasicGrid() {
         backgroundColor: "rgba(38,113,82,255)",
       }}
     >
+      <div
+        style={{
+          width: "95%",
+          height: "8rem",
+          margin: "0 auto",
+          display: "flex",
+          alignItems: "center",
+        }}
+        onClick={() => {
+          router.push("/posts");
+        }}
+      >
+        <ArrowCircleLeftOutlined
+          style={{ fontSize: "3rem", color: "white", cursor: "pointer" }}
+        />
+        <Typography
+          color="white"
+          margin={"1rem"}
+          fontWeight={"bold"}
+          sx={{ fontSize: "2rem" }}
+          variant="h1"
+        >
+          ver blogs
+        </Typography>
+      </div>
+
       <Grid container justifyContent={"center"} spacing={2}>
         {/* Card con el contenido principal */}
         <Grid size={11.5}>
           {postFound && (
             <Card
               style={{
-                background: `url(${postFound?.image})`,
+                background: `linear-gradient(rgba(41, 165, 103, 0.455),rgba(24, 72, 47, 0.684)
+                ),url(${postFound?.image})`,
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
@@ -101,6 +142,7 @@ function BasicGrid() {
               {new Date(
                 postFound?.createdAt as string | number | Date
               ).toLocaleString()}
+              . Bogota, Colombia
             </Typography>
             <Typography style={{ fontSize: "2.5rem" }}>
               {postFound?.header}
@@ -132,7 +174,7 @@ function BasicGrid() {
                     textIndent: "2rem",
                   }}
                 >
-                  {postFound.mainContent}
+                  {splitContent(postFound?.mainContent)}
                 </Typography>
               </div>
             )}

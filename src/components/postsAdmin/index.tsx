@@ -24,7 +24,7 @@ type CoverPreviews = {
 };
 
 const PostsWithCoverSelector: React.FC = () => {
-  const { getAllPosts, uploadImage } = useContext(UserContext);
+  const { getAllPosts, uploadImage, deletePostById } = useContext(UserContext);
   const [posts, setPosts] = useState<Post[]>([]);
   const [coverPreviews, setCoverPreviews] = useState<CoverPreviews>({});
   const [page, setPage] = useState<number>(1);
@@ -78,6 +78,20 @@ const PostsWithCoverSelector: React.FC = () => {
     setCurrentPostId(postId);
     setOpenModal(true);
   };
+
+  const handleDeletePost = async (id:string) => {
+    try {
+      const response = await deletePostById(id)
+      if(response) {
+        alert('Se elimino el post')
+      }
+      console.log(response);
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
 
   const handleCloseModal = () => {
     setOpenModal(false);
@@ -160,6 +174,14 @@ const PostsWithCoverSelector: React.FC = () => {
                     sx={{ marginTop: "10px" }}
                   >
                     Edit Image
+                  </Button>
+                  <Button
+                    onClick={() => handleDeletePost(post.id)}
+                    variant="outlined"
+                    color="secondary"
+                    sx={{ marginTop: "10px" }}
+                  >
+                    Delete post
                   </Button>
                 </TableCell>
               </TableRow>
