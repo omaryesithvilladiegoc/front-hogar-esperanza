@@ -88,7 +88,7 @@ export async function uploadImageFetch(id: string, file: File) {
   try {
     // Realizar la petición POST con fetch
     const response = await fetch(
-      `http://localhost:3001/file-upload/uploadImage/${id}`,
+      `${URL_FETCH}/file-upload/uploadImage/${id}`,
       {
         method: "POST",
         headers: {
