@@ -6,6 +6,7 @@ import { Providers } from "../providers";
 
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
+import NavBarUser from "../components/navBarUser/navBarUser";
 
 export const metadata: Metadata = {
   title: {
@@ -32,13 +33,26 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <head />
+
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
+          fontSans.variable
         )}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          {" "}
+          <NavBarUser />{" "}
+          <div
+            style={{
+              backgroundColor: "rgba(38,113,82,255)",
+              paddingTop: "5rem",
+            }}
+          >
+            {" "}
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
   );

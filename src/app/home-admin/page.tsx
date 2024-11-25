@@ -7,19 +7,28 @@ import { useMediaQuery } from "@mui/material";
 
 import CreatePost from "@/src/components/createPost";
 import NavbarComponent from "@/src/components/navBar/Navbar";
+import PostsWithCoverSelector from "@/src/components/postsAdmin";
 
 export default function Admin() {
   const matches = useMediaQuery("(min-width:600px)");
 
   return (
-    <div className="flex flex-col px-4 items-center">
-      <NavbarComponent />
-
+    <div
+      style={{
+        background:
+          'url("https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/IMG_1238.PNG?alt=media&token=db6cbf2a-7d50-44a9-a728-c1f6ea36149a")',
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+      className="flex flex-col items-center"
+    >
       <div
         className="flex w-full flex-col "
         style={{
           justifyContent: "center",
           alignItems: matches ? "" : "center",
+          marginTop: "2rem",
         }}
       >
         <Tabs aria-label="Options">
@@ -45,12 +54,7 @@ export default function Admin() {
             title="Posts"
           >
             <Card>
-              <CardBody>
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur.
-              </CardBody>
+              <PostsWithCoverSelector />
             </Card>
           </Tab>
           <Tab

@@ -3,11 +3,21 @@ import React from "react";
 import Cookies from "js-cookie";
 
 import { IUserContextType } from "../interfaces/interfaces";
-import { loginFetch } from "../fetch/user-fetch";
+import {
+  createPostFetch,
+  getAllPostFetch,
+  getPostByIdFetch,
+  loginFetch,
+  uploadImageFetch,
+} from "../fetch/user-fetch";
 
 export const UserContext = createContext<IUserContextType>({
   login: async () => null,
   logout: () => true,
+  createPost: async () => null,
+  getAllPosts: async () => null,
+  uploadImage: async () => null,
+  getPostById: async () => null,
 });
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
@@ -32,8 +42,57 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     return true;
   };
 
+  const getAllPosts = async () => {
+    try {
+      const posts = await getAllPostFetch();
+      return posts;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const createPost = async (post: any) => {
+    try {
+      const postCreated = await createPostFetch(post);
+      if (!postCreated) throw new Error("Hubo un error al crear el post");
+      console.log(postCreated);
+      return postCreated;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const uploadImage = async (id: string, file: File) => {
+    try {
+      const response = await uploadImageFetch(id, file);
+      console.log(response);
+
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const getPostById = async (id: string): Promise<any> => {
+    try {
+      const post = await getPostByIdFetch(id);
+      return post;
+    } catch (error) {
+      throw error;
+    }
+  };
+
   return (
-    <UserContext.Provider value={{ login, logout }}>
+    <UserContext.Provider
+      value={{
+        login,
+        logout,
+        createPost,
+        getAllPosts,
+        uploadImage,
+        getPostById,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

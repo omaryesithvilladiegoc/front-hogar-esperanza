@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent, useContext } from "react";
 import styled from "styled-components";
 import { Button } from "@nextui-org/button";
 import { Input, Textarea, Select, SelectItem } from "@nextui-org/react";
@@ -12,6 +12,7 @@ import MessageIcon from "@mui/icons-material/Message";
 import TextFormatIcon from "@mui/icons-material/TextFormat";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import ArticleIcon from "@mui/icons-material/Article";
+import { UserContext } from "@/src/context/user";
 
 // Definir tipos para los datos del formulario
 interface FormData {
@@ -20,6 +21,7 @@ interface FormData {
   header: string;
   mainContent: string;
   footer: string;
+  size: number;
   keywords: string[]; // Array de palabras clave seleccionadas
 }
 
@@ -166,16 +168,18 @@ const SubmitButton = styled(Button)`
 `;
 
 const CreatePost: React.FC = () => {
+  const { createPost } = useContext(UserContext);
   const [formData, setFormData] = useState<FormData>({
     title: "",
     subtitle: "",
     header: "",
     mainContent: "",
     footer: "",
+    size: 0,
     keywords: [],
   });
   const [errors, setErrors] = useState<{ [key in keyof FormData]?: string }>(
-    {},
+    {}
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -192,6 +196,8 @@ const CreatePost: React.FC = () => {
     "Servicios sociales",
   ];
 
+  const numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
   // Validar los campos del formulario
   const validateForm = () => {
     const newErrors: { [key in keyof FormData]?: string } = {};
@@ -207,6 +213,8 @@ const CreatePost: React.FC = () => {
       newErrors.footer = "El pie de página es obligatorio";
     if (formData.keywords.length === 0)
       newErrors.keywords = "Selecciona al menos una palabra clave";
+    if (!formData.size)
+      newErrors.keywords = "Debes seleccionar el size del post";
 
     setErrors(newErrors);
 
@@ -215,7 +223,7 @@ const CreatePost: React.FC = () => {
 
   // Manejar cambios en los campos del formulario
   const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
 
@@ -236,6 +244,13 @@ const CreatePost: React.FC = () => {
     }));
   };
 
+  const handleSelectChangeSize = (selected: number) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      size: selected,
+    }));
+  };
+
   // Función para manejar el envío del formulario
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -245,18 +260,24 @@ const CreatePost: React.FC = () => {
 
     // Si pasa la validación, simular el envío
     setIsSubmitting(true);
-    console.log("Formulario enviado:", formData);
-    // Aquí normalmente harías un fetch o post a tu API
-    setTimeout(() => {
-      setIsSubmitting(false);
-      alert("¡Formulario enviado con éxito!");
-    }, 1500);
+
+    try {
+      const post = await createPost(formData);
+      if (post) {
+        setIsSubmitting(false);
+        alert("Post creado exitosamente");
+      }
+    } catch (error) {
+      throw error;
+    }
   };
 
   return (
-    <FormContainer>
-      <Card className=" p-10">
-        <Title style={{ padding: "1rem" }}>Crear Nueva Publicación</Title>
+    <FormContainer style={{ backgroundColor: "transparent" }}>
+      <Card style={{ backgroundColor: "transparent" }} className=" p-10">
+        <Title style={{ padding: "1rem", color: "white" }}>
+          Crear Nueva Publicación
+        </Title>
         <Form onSubmit={handleSubmit}>
           <FormGrid>
             {/* Form Group 1 - Título, Subtítulo, Encabezado */}
@@ -367,6 +388,34 @@ const CreatePost: React.FC = () => {
                   </SelectItem>
                 ))}
               </StyledSelect>
+              {errors.keywords && (
+                <div style={{ color: "red" }}>{errors.keywords}</div>
+              )}
+
+              <StyledSelect
+                isRequired
+                label="Medida del post"
+                value={formData.size}
+                startContent={
+                  <>
+                    <span>
+                      {" "}
+                      <MessageIcon />{" "}
+                    </span>
+                  </>
+                }
+                style={{ overflow: "hidden", width: "5rem" }}
+                onChange={(e) => handleSelectChangeSize(Number(e.target.value))}
+              >
+                {numbers.map((keyword) => (
+                  <SelectItem key={keyword} value={keyword}>
+                    {keyword}
+                  </SelectItem>
+                ))}
+              </StyledSelect>
+              <h1 style={{ color: "white", fontWeight: "bolder" }}>
+                La medida del post seleccionada es: {formData.size}{" "}
+              </h1>
               {errors.keywords && (
                 <div style={{ color: "red" }}>{errors.keywords}</div>
               )}
