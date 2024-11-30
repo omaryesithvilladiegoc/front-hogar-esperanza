@@ -1,0 +1,18 @@
+
+/* backgroundColor: "rgba(38,113,82,.8)", */
+
+.animation-nav-bar {
+    animation: scroll-nav-bar linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 200px;
+}
+
+@keyframes scroll-nav-bar {
+    100% {
+        background-color: rgba(38,113,82,.8);
+        backdrop-filter: blur(7px);
+        font-size: 0.8rem;
+        height: 4rem;
+        justify-content: center;
+    }
+}

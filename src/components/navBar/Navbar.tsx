@@ -12,10 +12,11 @@ import {
 } from "@nextui-org/react";
 import { useContext } from "react";
 import Image from "next/image";
-
+import React from "react";
 import { UserContext } from "@/src/context/user";
 
-export default function NavbarComponent() {
+
+const NavbarComponent: React.FC = () => {
   const { logout } = useContext(UserContext);
 
   return (
@@ -81,3 +82,6 @@ export default function NavbarComponent() {
 }
 
 // https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/IMG_1190.PNG?alt=media&token=c313bd2e-b00c-413d-ac31-50201b059e73
+
+
+export default NavbarComponent

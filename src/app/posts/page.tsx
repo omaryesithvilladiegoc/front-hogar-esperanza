@@ -2,7 +2,7 @@
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
-import ReCAPTCHA from 'react-google-recaptcha';
+import React from "react";
 import { useEffect, useState, useContext } from "react";
 import {
   Typography,
@@ -24,7 +24,6 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import SegmentIcon from "@mui/icons-material/Segment";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import { SearchIcon } from "@/components/icons";
 import { MailOutline, ThumbUp } from '@mui/icons-material'; // Importar iconos de MUI
 
 
@@ -41,7 +40,7 @@ const style = {
   p: 4,
 };
 
-function BasicGrid() {
+const BasicGrid:React.FC = () =>{
   // Estado para asegurarnos de que se renderiza solo en el cliente
   const [mounted, setMounted] = useState(false);
   const [samplePosts, setSamplePosts] = useState<Post[]>([]);
@@ -51,32 +50,22 @@ function BasicGrid() {
   const token = Cookies.get("token");
   const [open, setOpen] = useState(false);
   const [selectedLike, setSelectedLike] = useState('')
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+  const [email, setEmail] = useState('');
+
+
+  const handleClose = () => setOpen(false);
+
   const handleOpen = (id:string) => {
     setSelectedLike(id);
     setOpen(true);
     
 
   } 
-  const handleClose = () => setOpen(false);
-  const [captchaVerified, setCaptchaVerified] = useState(false);
-  const [email, setEmail] = useState('');
-
-  // Función para manejar la verificación del reCAPTCHA
-  const handleCaptchaChange = (value:any) => {
-    if (value) {
-      setCaptchaVerified(true);
-    } else {
-      setCaptchaVerified(false);
-    }
-  };
 
   // Función para manejar el envío del formulario
   const handleSubmit = (e:any) => {
     e.preventDefault();
-    if (!captchaVerified) {
-      alert("Por favor, verifica que eres un humano.");
-      return;
-    }
     alert(`Correo enviado: ${email}`);
   };
 
@@ -111,9 +100,10 @@ function BasicGrid() {
         display: "flex",
         flexDirection: "column",
         alignItems: "start",
-        background: 'linear-gradient(to right,rgba(41, 165, 103, 0.232),to left,rgba(21, 84, 51, 0.899)',
         color: "white",
         height: "100%",
+        width:'92%',
+        margin:'0 auto'
       }}
     >
 
@@ -277,13 +267,7 @@ function BasicGrid() {
             onBlur={(e) => e.target.style.borderColor = '#ccc'}
           />
           
-          {/* reCAPTCHA */}
-          <ReCAPTCHA
-            sitekey="6Lfe7YkqAAAAAE6_zK-9Z7WGJAutQVIFAswz986U" // Reemplaza con tu clave del sitio de reCAPTCHA
-            onChange={handleCaptchaChange}
-            style={{ marginTop: '20px' }}
-          />
-          
+      
           {/* Botón de envío con icono de like */}
           <Button
             type="submit"

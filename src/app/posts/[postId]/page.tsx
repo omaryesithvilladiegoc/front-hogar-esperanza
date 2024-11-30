@@ -24,15 +24,16 @@ const splitContent = (content: string | undefined) => {
   for (let i = 0; i < sentences.length; i++) {
     formattedContent.push(sentences[i] + ".");
     if ((i + 1) % 3 === 0) {
-      formattedContent.push(<br key={`break-${i}`} />); // Agrega un salto de línea
-      formattedContent.push(<br key={`break-${i}`} />); // Agrega un salto de línea
+      // Usar una clave única para cada salto de línea
+      formattedContent.push(<br key={`break-${i * 2}`} />);
+      formattedContent.push(<br key={`break-${i * 2 + 1}`} />);
     }
   }
 
   return formattedContent;
 };
 
-function BasicGrid() {
+const BasicGrid:React.FC = () => {
   const [mounted, setMounted] = useState(false);
   const params = useParams();
   const idPost = params.postId as string;
@@ -68,7 +69,6 @@ function BasicGrid() {
         flexGrow: 1,
         width: "100%",
         minHeight: "100vh",
-        backgroundColor: "rgba(38,113,82,255)",
       }}
     >
       <div

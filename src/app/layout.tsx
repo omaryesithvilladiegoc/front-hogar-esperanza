@@ -5,9 +5,10 @@ import clsx from "clsx";
 import { Providers } from "../providers";
 
 import { siteConfig } from "@/config/site";
-import { fontSans } from "@/config/fonts";
-import NavBarUser from "../components/navBarUser/navBarUser";
+import { fontCursive, fontSans } from "@/config/fonts";
+import NavBarUser from "../components/navBarUser";
 import Footer from "../components/footer";
+import SocialMedia from "../components/socialMedia";
 
 export const metadata: Metadata = {
   title: {
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
     template: `%s - ${siteConfig.name}`,
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/",
   },
 };
 
@@ -31,24 +32,32 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
+
+
   return (
     <html suppressHydrationWarning lang="en">
-      <head />
+      <head  >
+    
+      </head>
 
       <body
         className={clsx(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
+          "min-h-screen bg-background antialiased",
+       
         )}
       >
+
+
         <Providers>
           {" "}
           <NavBarUser />{" "}
+          <SocialMedia />
           <div
             style={{
-              backgroundColor: "rgba(38,113,82,255)",
+           
               paddingTop: "5rem",
-              paddingBottom:'5rem'
+              paddingBottom:'10rem'
             }}
           >
             {" "}

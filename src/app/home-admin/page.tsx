@@ -9,7 +9,7 @@ import CreatePost from "@/src/components/createPost";
 import NavbarComponent from "@/src/components/navBar/Navbar";
 import PostsWithCoverSelector from "@/src/components/postsAdmin";
 
-export default function Admin() {
+const Admin: React.FC = () => {
   const matches = useMediaQuery("(min-width:600px)");
 
   return (
@@ -74,3 +74,5 @@ export default function Admin() {
     </div>
   );
 }
+
+export default Admin

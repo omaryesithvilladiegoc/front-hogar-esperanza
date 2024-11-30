@@ -1,0 +1,36 @@
+.gallery {
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.gallery img {
+    box-shadow: 4px 4px 5px -1px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 4px 4px 5px -1px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 4px 4px 5px -1px rgba(0, 0, 0, 0.6);
+
+}
+
+.animation-image {
+    animation: animation-images linear both;
+    animation-timeline: view();
+    animation-range: 20% cover 40%;
+    
+}
+
+@keyframes animation-images {
+    from {
+        opacity: 0;
+        translate: 0 150px;
+        scale: .5;
+    }
+
+    to {
+        opacity: 1;
+        translate: 0 0;
+        scale: 1;
+    }
+
+}
