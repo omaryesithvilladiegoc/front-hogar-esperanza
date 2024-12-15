@@ -2,30 +2,42 @@
 
 import {
   Avatar,
+  Box,
   Button,
   Divider,
+  Drawer,
   Menu,
   MenuItem,
   Stack,
   useMediaQuery,
 } from "@mui/material";
 import Link from "next/link";
-import React, { useContext, useEffect, useState } from "react";
+import React, { ReactElement, useContext, useEffect, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
-import { PointOfSaleRounded } from "@mui/icons-material";
-import { useParams, usePathname } from "next/navigation";
+import { PointOfSaleRounded, Widgets } from "@mui/icons-material";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { UserContext } from "@/src/context/user";
 import { fontCursive, fontRoboto } from "@/config/fonts";
 import "@/styles/nav-bar.css";
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import NewspaperOutlinedIcon from '@mui/icons-material/NewspaperOutlined';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import PhoneEnabledOutlinedIcon from '@mui/icons-material/PhoneEnabledOutlined';
+import VolunteerActivismOutlinedIcon from '@mui/icons-material/VolunteerActivismOutlined';
 
 const NavBarUser: React.FC = () => {
   const [mounted, setMounted] = useState(false);
   const matches = useMediaQuery("(min-width:680px)");
-  const [openMenu, setOpenMenu] = useState(false);
   const path = usePathname();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
   const { logout } = useContext(UserContext);
+  const router = useRouter();
+
+  const [open, setOpen] = useState(false);
+
+  const toggleDrawer = (newOpen: boolean) => () => {
+    setOpen(newOpen);
+  };
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -59,6 +71,13 @@ const NavBarUser: React.FC = () => {
     return color;
   }
 
+  const onclickItem = (url: string) => () => {
+    router.push(url);
+    if (url === url) {
+      setOpen(false);
+    }
+  };
+
   const stringAvatar = (name: string) => {
     return {
       sx: {
@@ -67,6 +86,39 @@ const NavBarUser: React.FC = () => {
       children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
     };
   };
+
+  const optionsDrawer = [
+    {
+      link: "/posts",
+      icon: <NewspaperOutlinedIcon />,
+      color: "pink",
+      name: "Blog",
+    },
+    {
+      link: "/",
+      icon: <HomeOutlinedIcon />,
+      color: "blue",
+      name: "Inicio",
+    },
+    {
+      link: "#nosotros",
+      icon: <InfoOutlinedIcon />,
+      color: "green",
+      name: "Nosotros",
+    },
+    {
+      link: "#contacto",
+      icon: <PhoneEnabledOutlinedIcon />,
+      color: "yellow",
+      name: "Contacto",
+    },
+    {
+      link: "/donaciones",
+      icon: <VolunteerActivismOutlinedIcon />,
+      color: "yellowgreen",
+      name: "Donaciones",
+    },
+  ];
 
   useEffect(() => {
     console.log(path);
@@ -77,19 +129,104 @@ const NavBarUser: React.FC = () => {
   if (!mounted) {
     return;
   }
+
   return (
     <>
+      {!matches && (
+        <Drawer
+          open={open}
+          onClose={toggleDrawer(false)}
+          sx={{
+            "& .MuiDrawer-paper": {
+              backgroundColor: "transparent", // Fondo transparente
+              backdropFilter: "blur(7px)", // Filtro de desenfoque
+              color: "whitesmoke", // Color de texto claro
+              boxShadow: "none", // Elimina sombra si no se necesita
+            },
+          }}
+        >
+          <Box
+            sx={{
+              width: 200,
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+            }}
+            role="presentation"
+          >
+            <Stack
+              width={"90%"}
+              margin={"0 auto"}
+              className="mobile-drawer-options"
+              gap={1}
+              justifyContent={"space-around"}
+              height={"60%"}
+            >
+              {optionsDrawer.map((element) => {
+                return (
+                  <button
+                    style={{
+                      cursor: "pointer",
+                      overflow: "hidden",
+                      borderRadius: "10px",
+                    }}
+                    key={element.color}
+                    onClick={onclickItem(element.link)}
+                  >
+                    <Stack alignItems={"center"} gap={1} flexDirection={"row"}>
+                      <div
+                        style={{
+                          backgroundColor: element.color,
+                          width: ".25rem",
+                          height: "4rem",
+                        }}
+                      ></div>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          gap: "1rem",
+                        }}
+                      >
+                        {element.icon}
+                        {element.name}
+                      </div>
+                    </Stack>
+                  </button>
+                );
+              })}
+            </Stack>
+          </Box>
+        </Drawer>
+      )}
+
+      {/* Fondo oscuro y difuminado cuando el Drawer está abierto */}
+      {open && (
+        <Box
+          sx={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.5)", // Sombra oscura
+            backdropFilter: "blur(7px)", // Difumina todo el fondo
+            zIndex: 999, // Asegura que esté sobre otros elementos
+          }}
+        />
+      )}
+
       {mounted && (
         <Stack
           alignItems={matches ? "end" : "center"}
           style={{
             width: "100%",
-            height: openMenu ? "25rem" : "5rem",
-            position: "fixed",
+            height: "5rem",
             zIndex: "1000",
+            top:0,
+            position:'sticky',
             borderBottom: ".5px solid white",
-            overflow: "hidden",
-            transition: "height 0.3s ease-in-out", // Asegura una transición suave en el cambio de altura
           }}
           className={`${fontRoboto.className} animation-nav-bar`}
         >
@@ -113,13 +250,19 @@ const NavBarUser: React.FC = () => {
                   justifyContent: "space-between",
                 }}
               >
-                <MenuIcon
-                  onClick={() => {
-                    setOpenMenu(!openMenu);
+                <div
+                  style={{
+                    cursor: "pointer",
+                    width: "100%",
+                    height: "fit-content",
                   }}
-                  style={{ fontSize: "2.5rem", cursor: "pointer" }}
-                />
-                <Link                  style={{
+                  onClick={toggleDrawer(true)}
+                >
+                  <MenuIcon style={{ fontSize: "2.5rem", cursor: "pointer" }} />
+                </div>
+
+                <Link
+                  style={{
                     backgroundColor: "rgba(10,105,82,255)",
                     padding: "1rem",
                     borderRadius: "1rem",
@@ -137,74 +280,90 @@ const NavBarUser: React.FC = () => {
             gap={"2rem"}
             flexDirection={matches ? "row" : "column"}
             alignItems={"center"}
-            justifyContent={'space-between'}
-            width={'90%'}
+            justifyContent={"space-between"}
+            width={"90%"}
           >
-            <div style={{display:'flex', gap:'2rem', justifyContent:'center', alignItems:'center'}}>  <img
-              loading="lazy"
-              width={"30rem"}
-              alt="hola"
-              src="https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/IMG_1190.PNG?alt=media&token=c313bd2e-b00c-413d-ac31-50201b059e73"
-            /> <h3 className={fontCursive.className} style={{color:'white'}}>Hogar esperanza</h3> </div>
-           
-            
-
-            <Stack gap={"2rem"}
-            flexDirection={matches ? "row" : "column"}
-            alignItems={"center"}
-            justifyContent={'space-between'}
-            style={{
-              color: "white",
-              height: "5rem",
-              marginRight: matches ? "5rem" : "",
-              marginTop: matches ? "" : "5rem",
-            }}>
-              <Link href="/posts">Blog</Link>
-
-              <Link href="/">Inicio</Link>
-              <Link href="https://deluxe-capybara-863266.netlify.app#mision">
-                Nosotros
-              </Link>
-              <Link
+            {matches && (
+              <div
                 style={{
-                  backgroundColor: "#164d34",
-                  padding: "1rem",
-                  borderRadius: "1rem",
-                  boxShadow: ".5px .5px .9px .09px black",
+                  display: "flex",
+                  gap: "2rem",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
-                href="#donaciones"
               >
-                Donaciones
-              </Link>
-              <Link href="https://deluxe-capybara-863266.netlify.app#contacto">
-                Contacto
-              </Link>
+                <img
+                  loading="lazy"
+                  width={"30rem"}
+                  alt="hola"
+                  src="https://res.cloudinary.com/de5tm90td/image/upload/v1734042069/assets/rfun93wlpk9dgtyuo7u2.png"
+                />
+                <h3 className={fontCursive.className} style={{ color: "white" }}>
+                  Hogar esperanza
+                </h3>
+              </div>
+            )}
 
-              {path === "/home-admin" && (
-                <Button
-                  id="basic-button"
-                  aria-controls={open ? "basic-menu" : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={open ? "true" : undefined}
-                  onClick={handleClick}
-                >
-                  <Avatar {...stringAvatar("Manuel Florez")} />
-                </Button>
-              )}
-              <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                  "aria-labelledby": "basic-button",
+            {matches && (
+              <Stack
+                gap={"2rem"}
+                flexDirection={matches ? "row" : "column"}
+                alignItems={"center"}
+                justifyContent={"space-between"}
+                style={{
+                  color: "white",
+                  height: "5rem",
+                  marginRight: matches ? "5rem" : "",
+                  marginTop: matches ? "" : "5rem",
                 }}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-                <MenuItem onClick={handleLogout}>Logout</MenuItem>
-              </Menu>
-            </Stack>
+                <Link href="/posts">Blog</Link>
+
+                <Link href="/">Inicio</Link>
+                <Link href="https://deluxe-capybara-863266.netlify.app#mision">
+                  Nosotros
+                </Link>
+                <Link
+                  style={{
+                    backgroundColor: "#164d34",
+                    padding: "1rem",
+                    borderRadius: "1rem",
+                    boxShadow: ".5px .5px .9px .09px black",
+                  }}
+                  href="#donaciones"
+                >
+                  Donaciones
+                </Link>
+                <Link href="https://deluxe-capybara-863266.netlify.app#contacto">
+                  Contacto
+                </Link>
+
+                {path === "/home-admin" && (
+                  <Button
+                    id="basic-button"
+                    aria-controls={open ? "basic-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? "true" : undefined}
+                    onClick={handleClick}
+                  >
+                    <Avatar {...stringAvatar("Manuel Florez")} />
+                  </Button>
+                )}
+                <Menu
+                  id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  MenuListProps={{
+                    "aria-labelledby": "basic-button",
+                  }}
+                >
+                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={handleClose}>My account</MenuItem>
+                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                </Menu>
+              </Stack>
+            )}
           </Stack>
         </Stack>
       )}

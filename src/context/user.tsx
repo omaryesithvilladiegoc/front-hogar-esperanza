@@ -9,7 +9,9 @@ import {
   getAllPostFetch,
   getPostByIdFetch,
   loginFetch,
+  sendMailToUserFetch,
   uploadImageFetch,
+  
 } from "../fetch/user-fetch";
 
 export const UserContext = createContext<IUserContextType>({
@@ -19,7 +21,8 @@ export const UserContext = createContext<IUserContextType>({
   getAllPosts: async () => null,
   uploadImage: async () => null,
   getPostById: async () => null,
-  deletePostById: async () => null
+  deletePostById: async () => null,
+  sendMailToUser: async () => null
 });
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
@@ -43,6 +46,14 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
     return true;
   };
+
+  const sendMailToUser = async ():Promise<any> => {
+    try {
+      const response = await sendMailToUserFetch()
+    } catch (error) {
+      throw error
+    }
+  }
 
   const getAllPosts = async () => {
     try {
@@ -105,7 +116,8 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
         getAllPosts,
         uploadImage,
         getPostById,
-        deletePostById
+        deletePostById,
+        sendMailToUser
       }}
     >
       {children}

@@ -9,6 +9,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { ReactElement } from "react";
 
 const photos = [
   "https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1776.jpg?alt=media&token=18c6d5a2-f1e1-450b-ae8a-6c9e841ebd9b",
@@ -16,7 +17,7 @@ const photos = [
   "https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1879.jpg?alt=media&token=2dc0abd8-3fa5-4878-b3eb-0fbeb91a805a"
 ];
 
-function Inicio() {
+function Inicio():ReactElement {
   const matches = useMediaQuery("(min-width:680px)");
 
   return (
@@ -31,11 +32,11 @@ function Inicio() {
           height="85%"
           flexDirection="row"
           gap="2rem"
-          style={{ width: "100%", margin: "0 auto",position:'fixed' }}
+          style={{ width: "100%", margin: "0 auto"}}
         >
           <Stack  textAlign={'center'} gap={"2rem"}  alignItems={'center'} justifyContent={"center"} width={"100%"}>
 
-            <div className={`${fontCursive.className} heading-inicio`} style={{fontSize:'4rem'}}>
+            <div className={`${fontCursive.className} heading-inicio`} style={{fontSize:matches ? '5rem' : '3rem'}}>
 
               <div style={{display:'flex'}}>
             {'hogar'.split('').map((word, index) => {
@@ -52,11 +53,11 @@ function Inicio() {
 
             <h1
             className={`${fontRoboto.className} animation-out`}
-              style={{ fontSize: matches ? "2em" : "1.2rem", width:'60rem'}}
+              style={{ fontSize: matches ? "2em" : "1.2rem"}}
             >
               El lugar donde los adultos <br />  mayores se sienten como en casa.
             </h1>
-            <p className={`${fontRoboto.className} animation-out`} style={{ fontSize: "1.2vw", width:'40rem' }}>
+            <p className={`${fontRoboto.className} animation-out`} style={{ fontSize: !matches?'1rem':'2rem', width:'70%' }}>
               Somos un hogar que brinda apoyo y amor a adultos mayores,
               promoviendo su bienestar y ofreciendo un entorno seguro donde
               vivan con dignidad, alegría y propósito.

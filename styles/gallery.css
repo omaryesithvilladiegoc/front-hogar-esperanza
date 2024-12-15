@@ -13,12 +13,12 @@
 
 }
 
-.animation-image {
+/* .animation-image {
     animation: animation-images linear both;
     animation-timeline: view();
     animation-range: 20% cover 40%;
     
-}
+} */
 
 @keyframes animation-images {
     from {

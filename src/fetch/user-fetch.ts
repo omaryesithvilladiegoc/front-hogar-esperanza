@@ -1,7 +1,7 @@
 "use client";
 
-const URL_FETCH = "http://localhost:3001";
-// const URL_FETCH = "https://back-hogar-esperanza.onrender.com";
+// const URL_FETCH = "http://localhost:3001";
+const URL_FETCH = "https://back-hogar-esperanza.onrender.com";
 
 
 import Cookies from "js-cookie";
@@ -160,4 +160,8 @@ export async function getPostByIdFetch(id: string) {
     console.error("Error al obtener los posts:", error);
     return null;
   }
+}
+
+export async function sendMailToUserFetch():Promise<any> {
+
 }

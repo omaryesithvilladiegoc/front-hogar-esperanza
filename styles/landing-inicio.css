@@ -3,18 +3,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    animation: mover .8s ease-in both;
+    /* animation: mover .8s ease-in both;
     animation: trasladar linear both;
     animation-timeline: scroll(root block);
-    animation-range: 0 200px; 
+    animation-range: 0 200px;  */
     
     
 }
 .animation-out {
-  animation: opacity 2s ease-in both;
+  /* animation: opacity 2s ease-in both;
   animation: trasladar linear both;
     animation-timeline: scroll(root block);
-    animation-range: 0 400px;
+    animation-range: 0 400px; */
 }
 
 @keyframes trasladar {

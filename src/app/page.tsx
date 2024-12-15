@@ -1,4 +1,5 @@
-import Inicio from "../components/LadingPage/Inicio";
+import Inicio from "../components/LadingPage/Home";
+import ContactSection from "../components/LadingPage/contact";
 import Gallery from "../components/LadingPage/gallery";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <div>
       <Inicio />
       <Gallery />
+      <ContactSection />
     </div>
   );
 }
