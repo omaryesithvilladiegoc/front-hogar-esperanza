@@ -22,7 +22,7 @@ function ContactSection() {
   }, []);
 
   return (
-    <Box id="contacto" ref={contactRef} className="contact-section" sx={{ height: { xs: '100vh', md: '160vh' }, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <Box id="contacto" ref={contactRef} className="contact-section" sx={{ height: { xs: '120vh', md: '160vh' }, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Grid container spacing={2} className="contact-container" sx={{ width: '80%', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', borderRadius: '1rem', padding: '2rem' }}>
         {loading && (
           <Box 
