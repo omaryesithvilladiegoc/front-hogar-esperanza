@@ -1,7 +1,7 @@
-import {nextui} from '@nextui-org/theme'
+import { nextui } from '@nextui-org/theme';
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
@@ -11,12 +11,12 @@ module.exports = {
     extend: {
       fontFamily: {
         borel: ['Borel', 'cursive'],
-        mono:['Mono','bold'],
-        sans:['Sans','bold'],
-        roboto:['Roboto','cursive']
+        mono: ['Mono', 'bold'],
+        sans: ['Sans', 'bold'],
+        roboto: ['Roboto', 'cursive'],
       },
     },
   },
   darkMode: "class",
   plugins: [nextui()],
-}
+};
