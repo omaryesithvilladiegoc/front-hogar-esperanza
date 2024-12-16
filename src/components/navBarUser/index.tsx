@@ -248,6 +248,7 @@ const NavBarUser: React.FC = () => {
                   width: "50%",
                   display: "flex",
                   justifyContent: "space-between",
+                  alignItems:'center'
                 }}
               >
                 <div
@@ -261,17 +262,13 @@ const NavBarUser: React.FC = () => {
                   <MenuIcon style={{ fontSize: "2.5rem", cursor: "pointer" }} />
                 </div>
 
-                <Link
-                  style={{
-                    backgroundColor: "rgba(10,105,82,255)",
-                    padding: "1rem",
-                    borderRadius: "1rem",
-                    boxShadow: ".5px .5px .9px .09px black",
-                  }}
-                  href="#donaciones"
-                >
-                  Donaciones
-                </Link>
+<div style={{height:'100%',display:'flex', flexDirection:'column',alignItems:'center',justifyContent:'center'}}>  <img
+                  loading="lazy"
+                  width={"30rem"}
+                  alt="hola"
+                  src="https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/rfun93wlpk9dgtyuo7u2"
+                /></div>
+              
               </div>
             </div>
           )}
