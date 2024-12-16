@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Grid, Typography, TextField, Button, Box, Alert, Snackbar, CircularProgress, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import validationSchema from '../../validations/conteact.validation';
+import { fontCursive } from '@/config/fonts';
 
 function ContactSection() {
   const [alert, setAlert] = useState({ open: false, message: '', severity: '' });
@@ -46,9 +47,12 @@ function ContactSection() {
         )}
 
         <Grid item xs={12} md={6} sx={{ position: 'relative' }}>
-          <Typography style={{fontFamily:"borel, cursive"}} fontSize={{ xs: '8vw', md: '4vw', }} variant="h3" color="white" gutterBottom>
+          <h2 style={{
+            color:'white',
+            fontSize:'4vw'
+          }} className={fontCursive.className}>
             contáctanos
-          </Typography>
+          </h2>
           <Typography width={{ md: '60%' }} variant="body1" color="white" paragraph>
             Contáctanos hoy mismo para obtener más información sobre nuestros servicios y programas diseñados para mejorar la calidad de vida de los adultos mayores. Nuestro equipo de profesionales estará encantado de atenderte y guiarte a través del proceso de inscripción.
           </Typography>

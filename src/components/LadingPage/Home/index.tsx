@@ -11,11 +11,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { ReactElement } from "react";
 
-const photos = [
-  "https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1776.jpg?alt=media&token=18c6d5a2-f1e1-450b-ae8a-6c9e841ebd9b",
-  "https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2Finstalacones%2FIMG_1735.jpg?alt=media&token=c7290f67-0bed-493a-888b-0bc257590579",
-  "https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1879.jpg?alt=media&token=2dc0abd8-3fa5-4878-b3eb-0fbeb91a805a"
-];
+
 
 function Inicio():ReactElement {
   const matches = useMediaQuery("(min-width:680px)");

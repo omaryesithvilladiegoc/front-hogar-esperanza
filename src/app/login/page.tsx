@@ -110,7 +110,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     alignItems: "center",
     height: "100vh",
     backgroundImage:
-      "url('https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/IMG_1238.PNG?alt=media&token=db6cbf2a-7d50-44a9-a728-c1f6ea36149a')",
+      "url('https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/IMG_1238_jq5t3g')",
     backgroundSize: "cover",
     backgroundPosition: "center",
   },
@@ -179,66 +179,3 @@ const styles: { [key: string]: React.CSSProperties } = {
 };
 
 export default Login;
-
-// <div
-//       className="flex items-center justify-center bg-cover bg-center"
-//       style={{ backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/IMG_1238.PNG?alt=media&token=db6cbf2a-7d50-44a9-a728-c1f6ea36149a')", height: '100vh', backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}
-//     >
-//       {/* Card with gradient and shadow */}
-//       <Card className="w-full max-w-xl bg-gradient-to-r from-green-400 via-green-500 to-green-600 shadow-2xl rounded-lg p-6 h-[400px]">
-//         <CardHeader style={{ display: 'flex', width: '100%', justifyContent: 'center' }}>
-//           <h2 className="text-2xl font-semibold text-center text-white">INICIAR SESION</h2>
-//         </CardHeader>
-
-//         <CardBody>
-//           {/* Error Message */}
-//           {errorMessage && <p className="text-red-500 text-center mb-4">{errorMessage}</p>}
-
-//           <form style={{ display: 'flex', gap: '2rem', flexDirection: 'column', backgroundColor:'transparent' }} onSubmit={handleSubmit}>
-//             {/* Email Input */}
-//             <div className="mb-6">
-//               <Input
-//                 aria-label="Correo electrónico"
-//                 type="email"
-//                 placeholder="Correo electrónico"
-//                 value={email}
-//                 onChange={(e) => setEmail(e.target.value)}
-//                 fullWidth
-//                 size="lg"
-//                 className="focus:ring-blue-500 border-white text-white placeholder-white"
-//               />
-//               {emailError && <p className="text-red-500 text-sm">{emailError}</p>}
-//             </div>
-
-//             {/* Password Input */}
-//             <div className="mb-6">
-//               <Input
-//                 aria-label="Contraseña"
-//                 type="password"
-//                 placeholder="Contraseña"
-//                 value={password}
-//                 onChange={(e) => setPassword(e.target.value)}
-//                 fullWidth
-//                 size="lg"
-//                 className="focus:ring-blue-500 border-white text-white placeholder-white"
-//               />
-//             </div>
-
-//             {/* Submit Button */}
-//             <Button
-//               type="submit"
-//               fullWidth
-//               size="lg"
-//               isLoading={loading}
-//               className="bg-blue-600 hover:bg-blue-700 text-white"
-//             >
-//               Iniciar sesión
-//             </Button>
-//           </form>
-//         </CardBody>
-
-//         <CardFooter className="text-center">
-//           <p className="text-sm text-gray-300">¿No tienes cuenta? <a href="/register" className="text-blue-300 hover:underline">Regístrate</a></p>
-//         </CardFooter>
-//       </Card>
-//     </div>

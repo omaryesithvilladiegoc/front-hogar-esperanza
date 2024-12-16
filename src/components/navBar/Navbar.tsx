@@ -23,13 +23,6 @@ const NavbarComponent: React.FC = () => {
     <Navbar isBordered>
       <NavbarContent>
         <NavbarBrand className="mr-4">
-          {/* Logo de Hogar Esperanza */}
-          {/* <Image
-  alt="Logo Hogar Esperanza"
-  src="https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/IMG_1190.PNG?alt=media&token=c313bd2e-b00c-413d-ac31-50201b059e73"
-  width={200} // Ajusta a tus necesidades
-  height={200} // Ajusta a tus necesidades
-/> */}
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-3" />
       </NavbarContent>
@@ -81,7 +74,6 @@ const NavbarComponent: React.FC = () => {
   );
 }
 
-// https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/IMG_1190.PNG?alt=media&token=c313bd2e-b00c-413d-ac31-50201b059e73
 
 
 export default NavbarComponent

@@ -60,7 +60,7 @@ const Footer = (props: Props) => {
               loading="lazy"
               width={"30rem"}
               alt="hola"
-              src="https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/IMG_1190.PNG?alt=media&token=c313bd2e-b00c-413d-ac31-50201b059e73"
+              src="https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/rfun93wlpk9dgtyuo7u2"
             />
             <Typography variant="h5">Fundacion Hogar Esperanza</Typography>
             <Typography variant="h6">
