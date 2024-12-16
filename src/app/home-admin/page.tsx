@@ -15,8 +15,7 @@ const Admin: React.FC = () => {
   return (
     <div
       style={{
-        background:
-          'url("https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/IMG_1238.PNG?alt=media&token=db6cbf2a-7d50-44a9-a728-c1f6ea36149a")',
+      
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",

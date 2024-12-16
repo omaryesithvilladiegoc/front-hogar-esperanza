@@ -296,7 +296,7 @@ const NavBarUser: React.FC = () => {
                   loading="lazy"
                   width={"30rem"}
                   alt="hola"
-                  src="https://res.cloudinary.com/de5tm90td/image/upload/v1734042069/assets/rfun93wlpk9dgtyuo7u2.png"
+                  src="https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/rfun93wlpk9dgtyuo7u2"
                 />
                 <h3 className={fontCursive.className} style={{ color: "white" }}>
                   Hogar esperanza

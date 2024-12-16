@@ -24,7 +24,7 @@ function Inicio():ReactElement {
     <section className="home" id="home">
       <Box
         sx={{
-          height: { xs: "100vh", md: "100vh", lg: "100vh" },
+          height: !matches? '60vh' : '90vh',
           color: "white",
         }}
       >

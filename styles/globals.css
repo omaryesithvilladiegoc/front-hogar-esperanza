@@ -8,10 +8,14 @@
    License: none (public domain)
 */
 
+.swiper-button-next, .swiper-button-prev {
+    color: white; /* Cambia el color de las flechas a blanco */
+  }
+
 body {
     background: linear-gradient(rgba(21, 84, 51, 0.745), rgba(21, 84, 51, 0.745)
 
-), url('https://res.cloudinary.com/de5tm90td/image/upload/v1732904651/IMG_1238_jq5t3g.png');
+), url('https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/IMG_1238_jq5t3g');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
