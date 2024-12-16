@@ -17,6 +17,7 @@ import {
   InputAdornment,
   TextField,
   Button,
+  CircularProgress,
 } from "@mui/material";
 import { UserContext } from "@/src/context/user";
 import { Post } from "@/src/interfaces/interfaces";
@@ -107,7 +108,7 @@ const BasicGrid:React.FC = () =>{
       }}
     >
 
-      {samplePosts.length === 0 && <>No hay posts</>}
+      {samplePosts.length === 0 && <> <CircularProgress color='success'/> </>}
 
       {!(samplePosts.length === 0) && (
         <>

@@ -262,14 +262,15 @@ const NavBarUser: React.FC = () => {
                   <MenuIcon style={{ fontSize: "2.5rem", cursor: "pointer" }} />
                 </div>
 
-<div style={{height:'100%',display:'flex', flexDirection:'column',alignItems:'center',justifyContent:'center'}}>  <img
+
+              
+              </div>
+              <div onClick={() => router.push('/')} style={{height:'100%',display:'flex', flexDirection:'column',alignItems:'center',justifyContent:'center'}}>  <img
                   loading="lazy"
                   width={"30rem"}
                   alt="hola"
                   src="https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/rfun93wlpk9dgtyuo7u2"
                 /></div>
-              
-              </div>
             </div>
           )}
 
