@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Grid, Typography, TextField, Button, Box, Alert, Snackbar, CircularProgress, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import { Grid, Typography, TextField, Button, Box, Alert, Snackbar, CircularProgress, Select, MenuItem, FormControl, InputLabel, useMediaQuery } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import validationSchema from '../../validations/conteact.validation';
 import { fontCursive } from '@/config/fonts';
@@ -11,6 +11,8 @@ function ContactSection() {
   const [loading, setLoading] = useState(false);
   const loaderRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
+  const matches = useMediaQuery("(min-width:1130px)");
+
 
   const handleClose = () => {
     setAlert({ ...alert, open: false });
@@ -49,7 +51,7 @@ function ContactSection() {
         <Grid item xs={12} md={6} sx={{ position: 'relative' }}>
           <h2 style={{
             color:'white',
-            fontSize:'4vw'
+            fontSize: matches ? '4vw' : '7vw'
           }} className={fontCursive.className}>
             contáctanos
           </h2>

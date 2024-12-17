@@ -3,6 +3,7 @@
 import { Facebook, Instagram, WhatsApp } from "@mui/icons-material";
 import { Box, SpeedDial, SpeedDialAction, SpeedDialIcon, Stack, useMediaQuery } from "@mui/material";
 import {LogoTiktok} from "../../assets/logo-tiktok-svgrepo-com"
+import { useRouter } from "next/navigation";
 
 const actions = [
     { icon: <Instagram sx={{ color: 'purple' }} />, name: 'Instagram', link:'https://www.instagram.com/hogaresperanza.mtr/profilecard/?igsh=YWw0NTd1NWw2eDJ1' },
@@ -15,6 +16,7 @@ const actions = [
 function SocialMedia() {
     // Verifica si el ancho de la pantalla es mayor a 1050px
     const isLargeScreen = useMediaQuery('(min-width:1050px)');
+    const router = useRouter()
 
     return (
         <Box>
@@ -43,8 +45,9 @@ function SocialMedia() {
                         }}
                     >
                         {actions.map((action) => (
-                            // target='_blank' component={'a'} href={action.link}
+                        
                             <SpeedDialAction 
+                                onClick={() => router.push(action.link)}
                                 key={action.name}
                                 icon={action.icon}
                                 tooltipTitle={action.name}

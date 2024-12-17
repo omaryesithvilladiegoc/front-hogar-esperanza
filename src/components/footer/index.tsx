@@ -10,6 +10,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 type Props = {};
@@ -18,19 +19,23 @@ const socialMedia = [
   {
     name: "instagram",
     icon: <Instagram />,
+    src:'https://www.instagram.com/hogaresperanza.mtr/profilecard/?igsh=YWw0NTd1NWw2eDJ1'
   },
   {
     name: "facebook",
     icon: <Facebook />,
+    src:'https://www.facebook.com/share/GQntcxkNkuwqfqFf/?mibextid=LQQJ4d'
   },
   {
     name: "whatsApp",
     icon: <WhatsApp />,
+    src:'https://wa.me/3013743729'
   },
 ];
 
 const Footer = (props: Props) => {
   const matches = useMediaQuery("(min-width:1130px)");
+  const router = useRouter()
 
   return (
     <div
@@ -74,6 +79,7 @@ const Footer = (props: Props) => {
               {socialMedia.map((element) => {
                 return (
                   <CardActionArea
+                    onClick={() => router.push(element.src)}
                     style={{
                       padding: ".2rem",
                       borderRadius: ".5rem",
@@ -130,7 +136,7 @@ const Footer = (props: Props) => {
 
 const styles = {
   footer: {
-    backgroundColor: "#164d34", // Cambia según tus necesidades
+    backgroundColor: "#164d34", 
     display: "flex",
     alignItems: "center",
     width: "100%",
