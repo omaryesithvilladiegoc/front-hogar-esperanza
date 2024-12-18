@@ -43,6 +43,7 @@ const Plans: React.FC = () => {
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
+                sx={{display:'flex',justifyContent:'center', alignItems:'center'}}
             >
                 <Swiper
                 navigation
@@ -50,8 +51,9 @@ const Plans: React.FC = () => {
                     style={{
                         display: 'flex',
                         flexDirection: 'column',
-                        height: '80%',
+                        height:matches ? '80%' : '65%',
                         width:'90%',
+                        overflow:'hidden',
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}
@@ -66,9 +68,9 @@ const Plans: React.FC = () => {
                         return (
 
 
-                            <SwiperSlide key={plan.id} style={{ height: '100%', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <SwiperSlide key={plan?.id} style={{ height: '100%', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                 <Stack style={{
-                                    height: '100%', background: `linear-gradient(to top, rgba(32, 180, 125, 0.8) 0%, rgba(0, 128, 0, 0) 100%), url(${plan.url as string})`,
+                                    height: '100%', background: `linear-gradient(to top, rgba(32, 180, 125, 0.8) 0%, rgba(0, 128, 0, 0) 100%), url(${plan?.url as string})`,
                                     width: '90%',
                                     margin: '0 auto',
                                     borderRadius: '20px',
@@ -91,30 +93,31 @@ const Plans: React.FC = () => {
 
                                     }}>
                                         <div style={{
-                                            width: !matches?'100%':'60%',
+                                            width: !matches?'100%':'70%',
                                             height: '100%',
                                             display: 'flex',
                                             padding: '4rem',
                                             flexDirection: 'column',
                                             gap: '1.5rem',
-                                            background: 'linear-gradient(-90deg, rgba(5,162,107,255) 95%, rgba(0,212,255,0) 100%)',
+                                           overflow:'hidden',
+                                           background: matches ?  'linear-gradient(-90deg, rgba(5,162,107,255) 95%, rgba(0,212,255,0) 100%)':'linear-gradient(-90deg, rgba(5,162,107,0.5) 95%, rgba(0,212,255,0) 100%)',
                                           
                                         }}>
                                             <div style={{
                                                 width: '100%',
                                             }}>
-                                                <h3 style={{ zIndex: 1, fontSize: '2.5rem', textAlign: 'left' }} className={fontRoboto.className}> {plan.nombre} </h3>
+                                                <h3 style={{ zIndex: 1, fontSize: matches? '2.5rem':'1.5rem', textAlign: 'left' }} className={fontRoboto.className}> {plan?.nombre} </h3>
 
 
                                             </div>
                                             <ul style={{
                                                 display: 'flex',
-                                                fontSize: matches?'15px':'20px',
+                                                fontSize: matches?'15px':'10px',
                                                 flexDirection: 'column',
                                                 textAlign: 'left',
                                                 justifyContent:'center'
                                             }}>
-                                                {plan.incluye.map((item) => {
+                                                {plan?.incluye.map((item) => {
                                                     return (
                                                         <li className={fontRoboto.className}> • {item} </li>
                                                     )
@@ -163,9 +166,9 @@ const Plans: React.FC = () => {
 
                 {programs.map((plan,index) => {
                     return (
-                        <SwiperSlide  onClick={ () => handleOpen(index)} key={plan.id} style={{ height: '100vh', width: '100%', cursor: 'pointer' }}>
+                        <SwiperSlide  onClick={ () => handleOpen(index)} key={plan?.id} style={{ height: '100vh', width: '100%', cursor: 'pointer', paddingBottom:'2rem' }}>
                             <Stack style={{
-                                height: '80%', background: `linear-gradient(to top, rgba(32, 180, 125, 0.8) 0%, rgba(0, 128, 0, 0) 100%), url(${plan.url as string})`,
+                                height: '75%', background: `linear-gradient(to top, rgba(32, 180, 125, 0.8) 0%, rgba(0, 128, 0, 0) 100%), url(${plan?.url as string})`,
                                 width: '100%',
                                 margin: '0 auto',
                                 borderRadius: '20px',
@@ -181,7 +184,7 @@ const Plans: React.FC = () => {
                                 backgroundSize: 'cover',
                                 backgroundPosition: 'center'
                             }} >
-                                <h2 style={{ zIndex: 1 }} className={fontRoboto.className}> {plan.nombre} </h2>
+                                <h2 style={{ zIndex: 1 }} className={fontRoboto.className}> {plan?.nombre} </h2>
 
                             </Stack>
 
