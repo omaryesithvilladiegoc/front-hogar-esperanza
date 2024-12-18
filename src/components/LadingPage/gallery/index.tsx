@@ -125,7 +125,7 @@ const Gallery:React.FC = () => {
         </Grid>
       </Grid>
       <Button style={{
-      width:'15%',
+      width:'40%',
       borderRadius:'4px',
       margin:'0 auto',
       color:'white',
@@ -185,7 +185,7 @@ const Gallery:React.FC = () => {
           backgroundRepeat: 'no-repeat',
           borderRadius: '2rem',
           width: '100%',
-          height: '50vh', // Ajusta la altura aquí
+          height: '50vh', 
         }}
       ></div>
     </Grid>

@@ -1,30 +1,56 @@
+"use client"
 import { fontCursive, fontRoboto } from "@/config/fonts"
-import { Stack, Typography } from "@mui/material"
+import { CircularProgress, Stack, Typography, useMediaQuery } from "@mui/material"
 import { Button } from "@nextui-org/button"
+import { useEffect, useState } from "react"
 
 const Home = () => {
-  return (<>
-  <Stack width={'40%'} gap={2} justifyContent={'center'} margin={'0 auto'} textAlign={'center'} color={'white'} flexDirection={'column'}>
-    <h1 style={{
-      fontSize:'5vw'
-    }} className={fontCursive.className}>hogar esperanza</h1>
-    <Stack gap={2}>
-    <h2 style={{fontSize:'1.2rem'}} className={fontRoboto.className} >El lugar donde los adultos mayores <br /> se sienten como en casa.</h2>
-    <p className={fontRoboto.className} >Somos un hogar que brinda apoyo y amor a adultos mayores,
-               promoviendo su bienestar y ofreciendo un entorno seguro donde
-             vivan con dignidad, alegría y propósito.</p>
-    </Stack>
+ const matches = useMediaQuery("(max-width:800px)");
+ const [isMounted,setIsMounted] = useState(false)
 
-    <Button className={fontRoboto.className} style={{
-      width:'60%',
-      margin:'0 auto',
-      color:'white',
-      backgroundColor:'#164d34',
-      border:'.5px solid white'
-    }} >Apoya con amor</Button>
-   
-    </Stack>
-  </>)
+ useEffect(() => {
+  setIsMounted(true)
+ },[])
+
+
+
+ if(!isMounted) {
+  return (<div style={{
+    width:'80vw',margin:'0 auto', display:'flex', justifyContent:'center', alignItems:'center'
+  }}><CircularProgress color='secondary' /></div>)
+ } else {
+  return (<>
+    <Stack width={!matches ? '40%' : '86%'} gap={2} justifyContent={'center'} margin={'0 auto'} textAlign={'center'} color={'white'} flexDirection={'column'}>
+      <h1 style={{
+        fontSize:!matches?'5vw':'10vw',
+        textAlign:'center',
+        justifyContent:'center'
+      }} className={fontCursive.className}>hogar esperanza</h1>
+      <Stack gap={2}>
+        <span>
+        <h2 style={{fontSize:'1rem'}} className={fontRoboto.className} >El lugar donde los adultos mayores</h2>
+        <h2 style={{fontSize:'1rem'}} className={fontRoboto.className} >se sienten como en casa.</h2>
+        </span>
+    
+      <p className={fontRoboto.className} >Somos un hogar que brinda apoyo y amor a adultos mayores,
+                 promoviendo su bienestar y ofreciendo un entorno seguro donde
+               vivan con dignidad, alegría y propósito.</p>
+      </Stack>
+  
+      <Button className={fontRoboto.className} style={{
+        width:'60%',
+        margin:'0 auto',
+        color:'white',
+        backgroundColor:'#164d34',
+        border:'.5px solid white'
+      }} >Apoya con amor</Button>
+     
+      </Stack>
+    </>)
+ }
+
+
+  
 }
 
 export default Home
