@@ -28,8 +28,9 @@ const Home = () => {
       }} className={fontCursive.className}>hogar esperanza</h1>
       <Stack gap={2}>
         <span>
-        <h2 style={{fontSize:'1rem'}} className={fontRoboto.className} >El lugar donde los adultos mayores</h2>
-        <h2 style={{fontSize:'1rem'}} className={fontRoboto.className} >se sienten como en casa.</h2>
+        <h2 style={{fontSize:'1rem'}} className={fontRoboto.className} >"El lugar donde los adultos mayores</h2>
+        <h2 style={{fontSize:'1rem'}} className={fontRoboto.className} >se sienten como en casa"
+        </h2>
         </span>
     
       <p className={fontRoboto.className} >Somos un hogar que brinda apoyo y amor a adultos mayores,
