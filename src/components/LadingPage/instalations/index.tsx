@@ -7,6 +7,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/zoom';
 import { Typography, useMediaQuery } from '@mui/material';
 import "../../../../styles/instalaciones.css";
+import { fontCursive } from '@/config/fonts';
 
 const additionalImages = [
   'https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/instlaciones/rnhh4kzigvmyfnb0koek',
@@ -47,9 +48,18 @@ const Instalaciones = () => {
 
   return (
     <div style={{ height: '100%', width: '100%', margin: '0 auto', display: 'flex', alignItems: 'center', flexDirection: 'column', backgroundColor: 'rgba(213, 225, 221, 0.85)' }}>
-      <Typography marginTop={'10rem'} component="h2" variant="h2" fontFamily="borel, cursive" textAlign="center" gutterBottom color={'#19a877'} fontSize={{xs:'8vw', md:'4vw'}}>
+      <h2 style={{ fontSize:'5vw',
+                color:'#164d34',
+                display:'flex',
+                width:'70vw',
+                textAlign:'center',
+                margin:'0 auto',
+                marginTop:'4rem',
+                flexDirection:'column',
+                justifyContent:'center',
+                alignItems:'center'}} className={fontCursive.className}>
         instalaciones
-      </Typography>
+      </h2>
       <div style={{ height: '100%', width: !isMobile ? '95%' : '80%', margin: '0 auto', display: 'flex', alignItems: 'center'}}>
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay, Manipulation, Zoom]}

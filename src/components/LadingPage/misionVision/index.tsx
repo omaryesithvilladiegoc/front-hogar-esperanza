@@ -1,11 +1,13 @@
 "use client"
 import React from 'react';
 import { Grid, Typography, Box } from '@mui/material';
+import { fontCursive } from '@/config/fonts';
 
 function MisionVision() {
   return (
     <Box
       sx={{
+        marginTop:'2rem',
         p: 2,
         backgroundColor: 'transparent',
         color: 'white',
@@ -27,9 +29,9 @@ function MisionVision() {
               margin: '0 auto',
             }}
           >
-            <Typography fontFamily="borel, cursive" variant="h2" gutterBottom>
+            <h2 style={{fontSize:'5vw'}} className={fontCursive.className}>
               misión
-            </Typography>
+            </h2>
             <Typography variant="body1" sx={{ mb: 2 }}>
               Nuestra misión es proporcionar a nuestros adultos mayores bienestar integral, calidad de vida y tranquilidad en un ambiente hogareño seguro, donde recibirán amor y cuidados excepcionales durante toda su estancia. Nos comprometemos a crear un espacio donde cada persona se sienta como en casa, valorando su individualidad y ofreciendo un entorno que promueva su felicidad y confort diario.
             </Typography>
@@ -51,9 +53,9 @@ function MisionVision() {
               margin: '0 auto',
             }}
           >
-            <Typography fontFamily="borel, cursive" variant="h2" gutterBottom>
+            <h2 style={{fontSize:'5vw'}} className={fontCursive.className}>
               visión
-            </Typography>
+            </h2>
             <Typography variant="body1"  sx={{ mb: 2 }}>
               Desde nuestros corazones y capacidades, nos esforzamos por ofrecer atención de primera calidad para consolidarnos como el hogar número uno para adultos mayores en Montería y sus alrededores.
             </Typography>

@@ -129,6 +129,7 @@ const BasicGrid:React.FC = () => {
                 >
                   {postFound?.title}
                 </Typography>
+               
               </Stack>
             </Card>
           )}
@@ -144,6 +145,17 @@ const BasicGrid:React.FC = () => {
               ).toLocaleString()}
               . Bogota, Colombia
             </Typography>
+            <Typography
+                  variant="h2"
+                  style={{
+                    fontSize: matches ? "4rem" : "2.5rem",
+                    fontWeight: "bold",
+                    color: "white",
+                    textShadow: ".8px 1px 1px black",
+                  }}
+                >
+                  {postFound?.subtitle}
+                </Typography>
             <Typography style={{ fontSize: "2.5rem" }}>
               {postFound?.header}
             </Typography>
@@ -187,6 +199,8 @@ const BasicGrid:React.FC = () => {
                 </li>
               ))}
             </ul>
+
+            {postFound?.footer}
           </Stack>
         </Grid>
       </Grid>

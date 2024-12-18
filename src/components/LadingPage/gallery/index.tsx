@@ -7,6 +7,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import '@/styles/gallery.css';
 import ViewAgendaIcon from '@mui/icons-material/ViewAgenda';
 import ViewColumnIcon from '@mui/icons-material/ViewColumn';
+import { fontRoboto } from '@/config/fonts';
 
 const imageProps = {
   style: { width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px' },
@@ -123,20 +124,17 @@ const Gallery:React.FC = () => {
           ></div>
         </Grid>
       </Grid>
-      <IconButton
-        onClick={handleOpen}
-        sx={{
-          marginTop:'2rem',
-          bgcolor: 'transparent',
-          color: 'white',
-          '&:hover': {
-            bgcolor: 'transparent',
-            color: '#333',
-          }
-        }}
-      > ver mas fotos
-        <AddPhotoAlternateIcon sx={{ fontSize: 20 }} />
-      </IconButton>
+      <Button style={{
+      width:'15%',
+      borderRadius:'4px',
+      margin:'0 auto',
+      color:'white',
+      textTransform:'uppercase',
+      backgroundColor:'#164d34',
+      border:'.5px solid white',
+      marginTop:'1rem'
+    }} >Ver más fotos  <AddPhotoAlternateIcon sx={{ fontSize: 20 }} /></Button>
+  
       <Modal
         open={open}
         onClose={handleClose}

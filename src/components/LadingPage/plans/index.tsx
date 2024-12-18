@@ -45,8 +45,8 @@ const Plans: React.FC = () => {
                     style={{
                         display: 'flex',
                         flexDirection: 'column',
-                        height: '100%',
-                        width:'85%',
+                        height: '80%',
+                        width:'90%',
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}
@@ -62,8 +62,8 @@ const Plans: React.FC = () => {
 
                             <SwiperSlide key={plan.id} style={{ height: '100%', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                 <Stack style={{
-                                    height: '90%', background: `linear-gradient(to top, rgba(32, 180, 125, 0.8) 0%, rgba(0, 128, 0, 0) 100%), url(${plan.url as string})`,
-                                    width: !matches?'90%':'60%',
+                                    height: '100%', background: `linear-gradient(to top, rgba(32, 180, 125, 0.8) 0%, rgba(0, 128, 0, 0) 100%), url(${plan.url as string})`,
+                                    width: '90%',
                                     margin: '0 auto',
                                     borderRadius: '20px',
                                     overflow: 'hidden',
@@ -73,7 +73,7 @@ const Plans: React.FC = () => {
                                     fontSize: '2.5rem',
                                     color: 'white',
                                     textAlign: 'center',
-                                    backgroundSize: 'contain',
+                                    backgroundSize: 'cover',
                                     backgroundRepeat: 'no-repeat',
                                     backgroundPosition: 'left'
                                 }} >
@@ -133,7 +133,19 @@ const Plans: React.FC = () => {
                 </Swiper>
 
             </Modal>
-            <Typography className={fontRoboto.className} width={'90vw'} margin={'0 auto'} textAlign={'center'} justifyContent={'center'} alignItems={'center'} fontSize={'4rem'} color='white'>Planes</Typography>
+
+            
+            <h2 className={fontCursive.className} style={{
+                fontSize:'5vw',
+                color:'white',
+                display:'flex',
+                width:'80vw',
+                textAlign:'center',
+                margin:'0 auto',
+                flexDirection:'column',
+                justifyContent:'center',
+                alignItems:'center'
+            }}>planes</h2>
             <Swiper
                 spaceBetween={100}
                 slidesPerView={matches ? 3 : 1}

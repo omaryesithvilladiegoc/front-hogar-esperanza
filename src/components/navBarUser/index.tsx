@@ -297,7 +297,7 @@ const NavBarUser: React.FC = () => {
                   src="https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/rfun93wlpk9dgtyuo7u2"
                 />
                 <h3 className={fontCursive.className} style={{ color: "white" }}>
-                  Hogar esperanza
+                  hogar esperanza
                 </h3>
               </div>
             )}
