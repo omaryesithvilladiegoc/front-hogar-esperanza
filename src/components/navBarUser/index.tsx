@@ -318,7 +318,7 @@ const NavBarUser: React.FC = () => {
                 <Link href="/posts">Blog</Link>
 
                 <Link href="/">Inicio</Link>
-                <Link href="https://deluxe-capybara-863266.netlify.app#mision">
+                <Link href="#mision">
                   Nosotros
                 </Link>
                 <Link
@@ -328,11 +328,11 @@ const NavBarUser: React.FC = () => {
                     borderRadius: "1rem",
                     boxShadow: ".5px .5px .9px .09px black",
                   }}
-                  href="#donaciones"
+                  href="/donaciones"
                 >
                   Donaciones
                 </Link>
-                <Link href="https://deluxe-capybara-863266.netlify.app#contacto">
+                <Link href="#contacto">
                   Contacto
                 </Link>
 

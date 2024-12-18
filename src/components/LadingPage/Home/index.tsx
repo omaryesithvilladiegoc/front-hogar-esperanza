@@ -15,9 +15,9 @@ const Home = () => {
 
 
  if(!isMounted) {
-  return (<div style={{
+  return (<span className={fontRoboto.className} style={{
     width:'80vw',margin:'0 auto', display:'flex', justifyContent:'center', alignItems:'center'
-  }}><CircularProgress color='secondary' /></div>)
+  }}><CircularProgress color='secondary' />Cargando, por favor espere...</span>)
  } else {
   return (<>
     <Stack width={!matches ? '40%' : '95%'} gap={2} justifyContent={'center'} margin={'0 auto'} textAlign={'center'} color={'white'} flexDirection={'column'}>
@@ -29,22 +29,22 @@ const Home = () => {
       }} className={fontCursive.className}>hogar <br /> esperanza</h1>
       <Stack gap={2}>
         <span style={{display:'flex',alignItems:'center', justifyContent:'center',gap:'1rem'}}>
-        <div style={{
+        <span style={{
           width:'1.5rem',
           height:'.1rem',
           backgroundColor:'white'
-        }}></div>
+        }}></span>
         <span>
         <h2 style={{fontSize:'1rem'}} className={fontRoboto.className} >El lugar donde los adultos mayores</h2>
         <h2 style={{fontSize:'1rem'}} className={fontRoboto.className} >se sienten como en casa
         </h2>
         </span>
        
-        <div style={{
+        <span style={{
           width:'1.5rem',
           height:'.1rem',
           backgroundColor:'white'
-        }}></div>
+        }}></span>
         </span>
     
       <p className={fontRoboto.className} >Somos un hogar que brinda apoyo y amor a adultos mayores,

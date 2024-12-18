@@ -48,7 +48,7 @@ const Instalaciones = () => {
 
   return (
     <div style={{ height: '100%', width: '100%', margin: '0 auto', display: 'flex', alignItems: 'center', flexDirection: 'column', backgroundColor: 'rgba(213, 225, 221, 0.85)' }}>
-      <h2 style={{ fontSize:'5vw',
+      <h2 style={{  fontSize:isMobile?'5vw':'12vw',
                 color:'#164d34',
                 display:'flex',
                 width:'70vw',

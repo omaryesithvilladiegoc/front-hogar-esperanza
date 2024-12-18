@@ -66,7 +66,7 @@ const Gallery:React.FC = () => {
             {...imageProps}
             className='animation-image'
             style={{
-              background: `url('https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/gallery/jp60f4h7sycjixspdhrz')`,
+              background: `url('https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto,w_800/v1/gallery/jp60f4h7sycjixspdhrz')`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
@@ -82,7 +82,7 @@ const Gallery:React.FC = () => {
             {...imageProps}
             className='animation-image'
             style={{
-              background: `url('https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/gallery/x7vqo4wxuylspkjw4imh')`,
+              background: `url('https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto,w_800/v1/gallery/x7vqo4wxuylspkjw4imh')`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
@@ -98,7 +98,7 @@ const Gallery:React.FC = () => {
             {...imageProps}
             className='animation-image'
             style={{
-              background: `url('https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/gallery/ws8th2tzkmkmsaxiskak')`,
+              background: `url('https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto,w_800/v1/gallery/ws8th2tzkmkmsaxiskak')`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
@@ -115,7 +115,7 @@ const Gallery:React.FC = () => {
             {...imageProps}
             className='animation-image'
             style={{
-              background: `url('https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/gallery/vulrlgtxbfuupiquqrjg')`,
+              background: `url('https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto,w_800/v1/gallery/vulrlgtxbfuupiquqrjg')`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',

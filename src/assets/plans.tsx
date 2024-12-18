@@ -23,7 +23,7 @@ const programs = [
       'Vigilancia nocturna de comportamiento al dormir.',
       'Afiliación a un seguro funerario si no lo posee.'
     ],
-    url: 'https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/wkqvcs1q0kpr5xyxrmk1' 
+    url: 'https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto,w_800/v1/assets/wkqvcs1q0kpr5xyxrmk1'
   },
   {
     id: 2,
@@ -48,11 +48,8 @@ const programs = [
       'Vigilancia nocturna de comportamiento al dormir.',
       'Afiliación a un seguro funerario si no lo posee.'
     ],
-    
-    
-    url: 'https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/zzmeb9cvifsudaapxvjr' 
+    url: 'https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto,w_800/v1/assets/zzmeb9cvifsudaapxvjr'
   },
- ,
   {
     id: 3,
     nombre: 'Hogar permanente VIP compartido',
@@ -77,7 +74,7 @@ const programs = [
       'Vigilancia nocturna de comportamiento al dormir.',
       'Afiliación a un seguro funerario si no lo posee.'
     ],
-    url: 'https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/mh5udorw9q18bwx8zoxi'
+    url: 'https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto,w_800/v1/assets/mh5udorw9q18bwx8zoxi'
   },
   {
     id: 4,
@@ -98,9 +95,7 @@ const programs = [
       'Apoyo en las actividades de la vida diaria.',
       'Vigilancia nocturna.'
     ],
-    
-    
-    url: 'https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/w7nkefh10dzvsa3kd5r8'
+    url: 'https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto,w_800/v1/assets/w7nkefh10dzvsa3kd5r8'
   },
   {
     id: 5,
@@ -119,7 +114,7 @@ const programs = [
       'Toma de signos vitales.',
       'Apoyo en las actividades de la vida diaria.'
     ],
-    url: 'https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/wgbojj4lpes6ctsb78kb'
+    url: 'https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto,w_800/v1/assets/wgbojj4lpes6ctsb78kb'
   }
 ];
 

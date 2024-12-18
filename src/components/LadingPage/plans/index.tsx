@@ -51,7 +51,7 @@ const Plans: React.FC = () => {
                     style={{
                         display: 'flex',
                         flexDirection: 'column',
-                        height:matches ? '80%' : '65%',
+                        height:matches ? '80%' : '75%',
                         width:'90%',
                         overflow:'hidden',
                         justifyContent: 'center',

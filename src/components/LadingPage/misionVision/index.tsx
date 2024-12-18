@@ -1,9 +1,11 @@
 "use client"
 import React from 'react';
-import { Grid, Typography, Box } from '@mui/material';
+import { Grid, Typography, Box, useMediaQuery } from '@mui/material';
 import { fontCursive } from '@/config/fonts';
 
 function MisionVision() {
+  const matches = useMediaQuery("(min-width:1130px)");
+
   return (
     <Box
       sx={{
@@ -29,7 +31,7 @@ function MisionVision() {
               margin: '0 auto',
             }}
           >
-            <h2 style={{fontSize:'5vw'}} className={fontCursive.className}>
+            <h2 style={{ fontSize:matches?'5vw':'12vw'}} className={fontCursive.className}>
               misión
             </h2>
             <Typography variant="body1" sx={{ mb: 2 }}>
@@ -53,7 +55,7 @@ function MisionVision() {
               margin: '0 auto',
             }}
           >
-            <h2 style={{fontSize:'5vw'}} className={fontCursive.className}>
+            <h2 style={{ fontSize:matches?'5vw':'12vw',}} className={fontCursive.className}>
               visión
             </h2>
             <Typography variant="body1"  sx={{ mb: 2 }}>

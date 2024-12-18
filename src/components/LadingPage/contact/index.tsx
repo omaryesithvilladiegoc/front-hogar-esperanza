@@ -13,9 +13,28 @@ function ContactSection() {
   const contactRef = useRef<HTMLElement>(null);
   const matches = useMediaQuery("(min-width:1130px)");
 
-
   const handleClose = () => {
     setAlert({ ...alert, open: false });
+  };
+
+  const handleSubmit = async (values: any, { resetForm }: any) => {
+    console.log('Formulario enviado:', values); // Imprime los datos del formulario en consola
+
+    setLoading(true);
+
+    try {
+      // Aquí puedes hacer la lógica para enviar los datos al servidor o hacer algo más
+      // Por ejemplo, un fetch o axios para hacer una petición POST.
+      
+      // Si todo sale bien, puedes resetear el formulario.
+      resetForm();
+      setAlert({ open: true, message: 'Formulario enviado correctamente', severity: 'success' });
+    } catch (error) {
+      console.error('Error al enviar el formulario', error);
+      setAlert({ open: true, message: 'Hubo un error al enviar el formulario', severity: 'error' });
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -28,20 +47,20 @@ function ContactSection() {
     <Box id="contacto" ref={contactRef} className="contact-section" sx={{ height: { xs: '120vh', md: '100vh' }, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Grid container spacing={2} className="contact-container" sx={{ width: '80%', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', borderRadius: '1rem', padding: '2rem' }}>
         {loading && (
-          <Box 
-            ref={loaderRef} 
-            sx={{ 
-              position: 'absolute', 
-              top: 0, 
-              left: 0, 
-              right: 0, 
-              bottom: 0, 
-              display: 'flex', 
-              justifyContent: 'center', 
-              alignItems: 'center', 
-              backgroundColor: 'rgba(0, 0, 0, 0.1)', 
-              borderRadius: '1rem', 
-              zIndex: 1 
+          <Box
+            ref={loaderRef}
+            sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: 'rgba(0, 0, 0, 0.1)',
+              borderRadius: '1rem',
+              zIndex: 1
             }}
           >
             <CircularProgress color="inherit" />
@@ -50,8 +69,8 @@ function ContactSection() {
 
         <Grid item xs={12} md={6} sx={{ position: 'relative' }}>
           <h2 style={{
-            color:'white',
-            fontSize: matches ? '4vw' : '7vw'
+            color: 'white',
+            fontSize: matches ? '2vw' : '6.5vw'
           }} className={fontCursive.className}>
             contáctanos
           </h2>
@@ -61,7 +80,7 @@ function ContactSection() {
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <Formik 
+          <Formik
             initialValues={{
               fullName: '',
               email: '',
@@ -70,21 +89,10 @@ function ContactSection() {
               plan: '',
             }}
             validationSchema={validationSchema}
-            onSubmit={async (values, { resetForm }) => {
-              console.log(values);
-              setLoading(true);
-              try {
-             
-              } catch (error) {
-            
-              } finally {
-               
-              }
-            }}
+            onSubmit={handleSubmit}
           >
-           
             {({ errors, touched, setFieldValue }) => (
-              <Form className='form' style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <Form className="form" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <Field
                   as={TextField}
                   name="fullName"
@@ -140,8 +148,8 @@ function ContactSection() {
                       color: 'white',
                     }
                   }}
-                /> 
-                <Field 
+                />
+                <Field
                   as={TextField}
                   name="phone"
                   label="Teléfono"
@@ -205,7 +213,7 @@ function ContactSection() {
                     labelId="plan-label"
                     name="plan"
                     label="Plan que te interesa"
-                    onChange={(e:any) => setFieldValue('plan', e.target.value)}
+                    onChange={(e: any) => setFieldValue('plan', e.target.value)}
                     sx={{
                       background: 'transparent',
                       color: 'white',
@@ -222,7 +230,7 @@ function ContactSection() {
                     <MenuItem value={'Hogar permanente VIP'}>Hogar permanente VIP</MenuItem>
                     <MenuItem value={'Hogar de vacaciones'}>Hogar de vacaciones</MenuItem>
                     <MenuItem value={'Hogar permanente VIP compartido'}>Hogar permanente VIP compartido</MenuItem>
-                    <MenuItem value={'Hogar cuidado diario'} >Hogar cuidado diario</MenuItem>
+                    <MenuItem value={'Hogar cuidado diario'}>Hogar cuidado diario</MenuItem>
                   </Field>
                   {touched.plan && errors.plan && (
                     <Typography variant="caption" color="error">{errors.plan}</Typography>

@@ -110,7 +110,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     alignItems: "center",
     height: "100vh",
     backgroundImage:
-      "url('https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/IMG_1238_jq5t3g')",
+      "url('https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto,w_800/IMG_1238_jq5t3g')",
     backgroundSize: "cover",
     backgroundPosition: "center",
   },
