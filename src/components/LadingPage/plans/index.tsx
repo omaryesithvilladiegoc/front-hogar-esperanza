@@ -11,6 +11,7 @@ import programs from '@/src/assets/plans';
 import { fontCursive, fontRoboto } from '@/config/fonts';
 import Modal from '@mui/material/Modal';
 import { useState } from 'react';
+import "../../../../styles/plans.css"
 
 const style = {
     position: 'absolute',
@@ -26,9 +27,13 @@ const style = {
 
 const Plans: React.FC = () => {
     const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
+    const handleOpen = (index:number) => {
+        setSlideInitial(index)
+        setOpen(true)
+    } ;
     const handleClose = () => setOpen(false);
     const matches = useMediaQuery("(min-width:800px)");
+    const [slideInitial,setSlideInitial] = useState(programs.length)
 
 
     return (
@@ -52,6 +57,7 @@ const Plans: React.FC = () => {
                     }}
                     spaceBetween={100}
                     slidesPerView={1}
+                    initialSlide={slideInitial}
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}
                 >
@@ -73,7 +79,7 @@ const Plans: React.FC = () => {
                                     fontSize: '2.5rem',
                                     color: 'white',
                                     textAlign: 'center',
-                                    backgroundSize: 'cover',
+                                    backgroundSize: 'contain',
                                     backgroundRepeat: 'no-repeat',
                                     backgroundPosition: 'left'
                                 }} >
@@ -85,34 +91,32 @@ const Plans: React.FC = () => {
 
                                     }}>
                                         <div style={{
-                                            width: !matches?'100%':'80%',
+                                            width: !matches?'100%':'60%',
                                             height: '100%',
                                             display: 'flex',
-                                            padding: '2rem',
+                                            padding: '4rem',
                                             flexDirection: 'column',
                                             gap: '1.5rem',
-                                            background: 'linear-gradient(-90deg, rgba(5,162,107,255) 70%, rgba(0,212,255,0) 100%)',
+                                            background: 'linear-gradient(-90deg, rgba(5,162,107,255) 95%, rgba(0,212,255,0) 100%)',
                                           
                                         }}>
                                             <div style={{
-                                                width: '80%',
-                                                margin: '0 auto'
+                                                width: '100%',
                                             }}>
-                                                <h3 style={{ zIndex: 1, fontSize: '2rem', textAlign: 'left' }} className={fontRoboto.className}> {plan.nombre} </h3>
+                                                <h3 style={{ zIndex: 1, fontSize: '2.5rem', textAlign: 'left' }} className={fontRoboto.className}> {plan.nombre} </h3>
 
 
                                             </div>
                                             <ul style={{
                                                 display: 'flex',
-                                                fontSize: matches?'20px':'10px',
+                                                fontSize: matches?'15px':'20px',
                                                 flexDirection: 'column',
                                                 textAlign: 'left',
-                                                width: '80%',
-                                                margin: '0 auto'
+                                                justifyContent:'center'
                                             }}>
                                                 {plan.incluye.map((item) => {
                                                     return (
-                                                        <li> • {item} </li>
+                                                        <li className={fontRoboto.className}> • {item} </li>
                                                     )
                                                 })}
 
@@ -136,10 +140,12 @@ const Plans: React.FC = () => {
 
             
             <h2 className={fontCursive.className} style={{
-                fontSize:'5vw',
+                fontSize:matches?'5vw':'12vw',
                 color:'white',
                 display:'flex',
-                width:'80vw',
+                width:'75vw',
+                height:'100%',
+               paddingTop:'2rem',
                 textAlign:'center',
                 margin:'0 auto',
                 flexDirection:'column',
@@ -147,17 +153,19 @@ const Plans: React.FC = () => {
                 alignItems:'center'
             }}>planes</h2>
             <Swiper
-                spaceBetween={100}
+                spaceBetween={30}
                 slidesPerView={matches ? 3 : 1}
                 onSlideChange={() => console.log('slide change')}
                 onSwiper={(swiper) => console.log(swiper)}
+                modules={[Navigation]}
+                navigation
             >
 
-                {programs.map((plan) => {
+                {programs.map((plan,index) => {
                     return (
-                        <SwiperSlide onClick={handleOpen} key={plan.id} style={{ height: '100vh', width: '100%', cursor: 'pointer' }}>
+                        <SwiperSlide  onClick={ () => handleOpen(index)} key={plan.id} style={{ height: '100vh', width: '100%', cursor: 'pointer' }}>
                             <Stack style={{
-                                height: '70%', background: `linear-gradient(to top, rgba(32, 180, 125, 0.8) 0%, rgba(0, 128, 0, 0) 100%), url(${plan.url as string})`,
+                                height: '80%', background: `linear-gradient(to top, rgba(32, 180, 125, 0.8) 0%, rgba(0, 128, 0, 0) 100%), url(${plan.url as string})`,
                                 width: '100%',
                                 margin: '0 auto',
                                 borderRadius: '20px',
@@ -165,7 +173,7 @@ const Plans: React.FC = () => {
                                 display: 'flex',
                                 justifyContent: 'end',
                                 flexDirection: 'column',
-                                fontSize: '2.5rem',
+                                fontSize: '2rem',
                                 color: 'white',
                                 padding: '1rem',
                                 textAlign: 'center',
@@ -176,6 +184,7 @@ const Plans: React.FC = () => {
                                 <h2 style={{ zIndex: 1 }} className={fontRoboto.className}> {plan.nombre} </h2>
 
                             </Stack>
+
                         </SwiperSlide>
                     )
                 })}

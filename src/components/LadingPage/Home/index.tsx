@@ -20,17 +20,31 @@ const Home = () => {
   }}><CircularProgress color='secondary' /></div>)
  } else {
   return (<>
-    <Stack width={!matches ? '40%' : '86%'} gap={2} justifyContent={'center'} margin={'0 auto'} textAlign={'center'} color={'white'} flexDirection={'column'}>
+    <Stack width={!matches ? '40%' : '95%'} gap={2} justifyContent={'center'} margin={'0 auto'} textAlign={'center'} color={'white'} flexDirection={'column'}>
       <h1 style={{
         fontSize:!matches?'5vw':'10vw',
         textAlign:'center',
-        justifyContent:'center'
-      }} className={fontCursive.className}>hogar esperanza</h1>
+        justifyContent:'center',
+        alignItems:'center'
+      }} className={fontCursive.className}>hogar <br /> esperanza</h1>
       <Stack gap={2}>
+        <span style={{display:'flex',alignItems:'center', justifyContent:'center',gap:'1rem'}}>
+        <div style={{
+          width:'1.5rem',
+          height:'.1rem',
+          backgroundColor:'white'
+        }}></div>
         <span>
-        <h2 style={{fontSize:'1rem'}} className={fontRoboto.className} >"El lugar donde los adultos mayores</h2>
-        <h2 style={{fontSize:'1rem'}} className={fontRoboto.className} >se sienten como en casa"
+        <h2 style={{fontSize:'1rem'}} className={fontRoboto.className} >El lugar donde los adultos mayores</h2>
+        <h2 style={{fontSize:'1rem'}} className={fontRoboto.className} >se sienten como en casa
         </h2>
+        </span>
+       
+        <div style={{
+          width:'1.5rem',
+          height:'.1rem',
+          backgroundColor:'white'
+        }}></div>
         </span>
     
       <p className={fontRoboto.className} >Somos un hogar que brinda apoyo y amor a adultos mayores,

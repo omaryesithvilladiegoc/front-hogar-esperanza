@@ -1,13 +1,14 @@
 "use client"
 
 import React, { useState } from 'react';
-import { Box, Button, Grid, Modal, IconButton, Typography } from "@mui/material";
+import { Box, Button, Grid, Modal, IconButton, Typography, useMediaQuery } from "@mui/material";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import CloseIcon from '@mui/icons-material/Close';
 import '@/styles/gallery.css';
 import ViewAgendaIcon from '@mui/icons-material/ViewAgenda';
 import ViewColumnIcon from '@mui/icons-material/ViewColumn';
 import { fontRoboto } from '@/config/fonts';
+import { Padding } from '@mui/icons-material';
 
 const imageProps = {
   style: { width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px' },
@@ -43,6 +44,7 @@ const additionalImages = [
 ];
 
 const Gallery:React.FC = () => {
+  const matches = useMediaQuery("(max-width:800px)");
   const [open, setOpen] = useState(false);
   const [gridSize, setGridSize] = useState(4);
 
@@ -124,16 +126,17 @@ const Gallery:React.FC = () => {
           ></div>
         </Grid>
       </Grid>
-      <Button style={{
-      width:'40%',
-      borderRadius:'4px',
+      <button className={fontRoboto.className} style={{
+      width:matches ? '80%' : '20%',
+      borderRadius:'10px',
       margin:'0 auto',
       color:'white',
-      textTransform:'uppercase',
       backgroundColor:'#164d34',
       border:'.5px solid white',
-      marginTop:'1rem'
-    }} >Ver más fotos  <AddPhotoAlternateIcon sx={{ fontSize: 20 }} /></Button>
+      marginTop:'1rem',
+      padding:'.5rem'
+      
+    }} onClick={handleOpen} > Ver más fotos <AddPhotoAlternateIcon sx={{ fontSize: 20 }} /></button>
   
       <Modal
         open={open}

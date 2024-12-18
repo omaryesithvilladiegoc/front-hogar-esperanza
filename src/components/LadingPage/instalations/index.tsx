@@ -60,24 +60,25 @@ const Instalaciones = () => {
                 alignItems:'center'}} className={fontCursive.className}>
         instalaciones
       </h2>
-      <div style={{ height: '100%', width: !isMobile ? '95%' : '80%', margin: '0 auto', display: 'flex', alignItems: 'center'}}>
+      <div style={{ height: '80%', width: !isMobile ? '95%' : '90%', margin: '0 auto', display: 'flex', alignItems: 'center'}}>
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay, Manipulation, Zoom]}
-          spaceBetween={100}
+          spaceBetween={80}
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
           navigation
+          autoplay
           onSwiper={(slide) => slide}
           onSlideChange={handleSlideChange}
           zoom={true}
           breakpoints={{
             640: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
+            768: { slidesPerView: 1 },
             1024: { slidesPerView: 3 },
           }}
         >
           {additionalImages.map((item, index) => (
-            <SwiperSlide key={index} style={{ height: '35rem', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent' }}>
+            <SwiperSlide key={index} style={{ height: '28rem', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent' }}>
               <div className="swiper-zoom-container" style={{ background: `url(${item})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center', width: '40rem', height: '18rem', borderRadius: '2rem' }}></div>
             </SwiperSlide>
           ))}

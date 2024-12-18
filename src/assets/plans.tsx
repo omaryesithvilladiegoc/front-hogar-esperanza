@@ -1,31 +1,6 @@
 const programs = [
   {
     id: 1,
-    nombre: 'Hogar permanente compartido',
-    descripcion: 'Este programa está diseñado específicamente para familias que buscan ofrecer a sus adultos mayores un hogar definitivo, seguro y lleno de calidad de vida. En Hogar Esperanza, entendemos la importancia de proporcionar un entorno donde cada residente se sienta verdaderamente en casa. Nos comprometemos a ofrecer no solo un lugar físico, sino un ambiente cálido y acogedor, donde sus seres queridos recibirán atención personalizada y afectuosa.',
-    incluye: [
-      'Habitación compartida con baño compartido.',
-      'Tres comidas principales y 2 meriendas.',
-      'Aseo y mantenimiento a la habitación diario.',
-      'Cuidado de pertenencias.',
-      'Lavado y planchado de ropa.',
-      'Salidas con acompañamiento (previamente autorizadas por su responsable directo).',
-      'Asistencia en comunicación virtual con familiares.',
-      'Acompañamiento de auxiliares de enfermería las 24 h.',
-      'AMI, servicio de asistencia primaria y emergencias.',
-      'Actividades recreativas todas las semanas.',
-      'Visitas semanales de especialistas de la salud integral como psicólogos, fisioterapeutas, terapeuta ocupacional.',
-      'Dinámicas de integración familiar los fines de semana.',
-      'Suministro de medicamentos autorizados por sus médicos tratantes.',
-      'Toma de signos vitales.',
-      'Apoyo en las actividades de la vida diaria.',
-      'Vigilancia nocturna de comportamiento al dormir.',
-      'Afiliación a un seguro funerario si no lo posee.'
-    ],
-    url: 'https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/wkqvcs1q0kpr5xyxrmk1' 
-  },
-  {
-    id: 2,
     nombre: 'Hogar permanente VIP',
     descripcion: 'Nuestro programa VIP está meticulosamente diseñado para familias que buscan proporcionar a sus adultos mayores un hogar definitivo, seguro y lleno de una calidad de vida excepcional. En Hogar Esperanza, reconocemos la importancia fundamental de crear un entorno donde cada residente no solo se sienta acogido, sino verdaderamente en casa.',
     incluye: [
@@ -48,8 +23,36 @@ const programs = [
       'Vigilancia nocturna de comportamiento al dormir.',
       'Afiliación a un seguro funerario si no lo posee.'
     ],
+    url: 'https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/wkqvcs1q0kpr5xyxrmk1' 
+  },
+  {
+    id: 2,
+    nombre: 'Hogar permanente compartido',
+    descripcion: 'Este programa está diseñado específicamente para familias que buscan ofrecer a sus adultos mayores un hogar definitivo, seguro y lleno de calidad de vida. En Hogar Esperanza, entendemos la importancia de proporcionar un entorno donde cada residente se sienta verdaderamente en casa. Nos comprometemos a ofrecer no solo un lugar físico, sino un ambiente cálido y acogedor, donde sus seres queridos recibirán atención personalizada y afectuosa.',
+    incluye: [
+      'Habitación compartida con baño compartido.',
+      'Tres comidas principales y 2 meriendas.',
+      'Aseo y mantenimiento a la habitación diario.',
+      'Cuidado de pertenencias.',
+      'Lavado y planchado de ropa.',
+      'Salidas con acompañamiento (previamente autorizadas por su responsable directo).',
+      'Asistencia en comunicación virtual con familiares.',
+      'Acompañamiento de auxiliares de enfermería las 24 h.',
+      'AMI, servicio de asistencia primaria y emergencias.',
+      'Actividades recreativas todas las semanas.',
+      'Visitas semanales de especialistas de la salud integral como psicólogos, fisioterapeutas, terapeuta ocupacional.',
+      'Dinámicas de integración familiar los fines de semana.',
+      'Suministro de medicamentos autorizados por sus médicos tratantes.',
+      'Toma de signos vitales.',
+      'Apoyo en las actividades de la vida diaria.',
+      'Vigilancia nocturna de comportamiento al dormir.',
+      'Afiliación a un seguro funerario si no lo posee.'
+    ],
+    
+    
     url: 'https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/zzmeb9cvifsudaapxvjr' 
   },
+ ,
   {
     id: 3,
     nombre: 'Hogar permanente VIP compartido',
@@ -74,7 +77,7 @@ const programs = [
       'Vigilancia nocturna de comportamiento al dormir.',
       'Afiliación a un seguro funerario si no lo posee.'
     ],
-    url: 'https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/w7nkefh10dzvsa3kd5r8'
+    url: 'https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/mh5udorw9q18bwx8zoxi'
   },
   {
     id: 4,
@@ -95,7 +98,9 @@ const programs = [
       'Apoyo en las actividades de la vida diaria.',
       'Vigilancia nocturna.'
     ],
-    url: 'https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/mh5udorw9q18bwx8zoxi'
+    
+    
+    url: 'https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/w7nkefh10dzvsa3kd5r8'
   },
   {
     id: 5,
