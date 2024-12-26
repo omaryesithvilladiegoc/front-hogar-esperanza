@@ -7,7 +7,7 @@ import { Providers } from "../providers";
 import { siteConfig } from "@/config/site";
 import { fontCursive, fontSans } from "@/config/fonts";
 import NavBarUser from "../components/navBarUser";
-import Footer from "../components/footer";
+import Footer from "../components/LadingPage/footer";
 import SocialMedia from "../components/socialMedia";
 
 export const metadata: Metadata = {

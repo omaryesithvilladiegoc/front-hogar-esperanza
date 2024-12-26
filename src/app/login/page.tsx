@@ -109,10 +109,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     justifyContent: "center",
     alignItems: "center",
     height: "100vh",
-    backgroundImage:
-      "url('https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto,w_800/IMG_1238_jq5t3g')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
+    
   },
   card: {
     background: "rgba(38,113,82,255)",

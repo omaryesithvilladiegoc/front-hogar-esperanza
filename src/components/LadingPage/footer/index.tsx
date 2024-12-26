@@ -1,7 +1,7 @@
 "use client";
 
 import { fontRoboto } from "@/config/fonts";
-import { Facebook, Instagram, Twitter, WhatsApp } from "@mui/icons-material";
+import { Facebook, Instagram, Spa, Twitter, WhatsApp } from "@mui/icons-material";
 import {
   Stack,
   Typography,
@@ -61,6 +61,7 @@ const Footer = (props: Props) => {
             alignItems={"baseline"}
             flexDirection={"column"}
             width={"30rem"}
+          
           >
             <img
               loading="lazy"
@@ -69,8 +70,8 @@ const Footer = (props: Props) => {
               src="https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/rfun93wlpk9dgtyuo7u2"
               style={{ maxWidth: "100%", height: "auto" }}
             />
-            <h5>Fundacion Hogar Esperanza</h5>
-            <h6>
+            <h5 className={fontRoboto.className}>Fundacion Hogar Esperanza</h5>
+            <h6  className={fontRoboto.className}>
               Cl. 24 #15 - 90, Montería, Córdoba
             </h6>
             <p className={fontRoboto.className}>
@@ -91,7 +92,7 @@ const Footer = (props: Props) => {
                     }}
                     key={element.name}
                   >
-                    {element.icon} {matches && element.name}
+                    {element.icon} {matches && <span className={fontRoboto.className}> {element.name}</span>}
                   </CardActionArea>
                 );
               })}
@@ -107,10 +108,7 @@ const Footer = (props: Props) => {
             />
 
             <Stack className={fontRoboto.className} gap={"1rem"} alignItems={"baseline"}>
-              <Link href={""}>Política de Privacidad</Link>
-              <Link href={""}>Términos y Condiciones</Link>
-              <Link href={""}>Términos de Uso</Link>
-              <Link href={""}>Política de Cookies</Link>
+              <Link href={"/privacity"}>Política de Privacidad</Link>
             </Stack>
           </Stack>
         </footer>

@@ -69,7 +69,7 @@ const Plans: React.FC = () => {
 
 
                             <SwiperSlide key={plan?.id} style={{ height: '100%', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                <Stack style={{
+                                <div style={{
                                     height: '100%', background: `linear-gradient(to top, rgba(32, 180, 125, 0.8) 0%, rgba(0, 128, 0, 0) 100%), url(${plan?.url as string})`,
                                     width: '90%',
                                     margin: '0 auto',
@@ -81,7 +81,7 @@ const Plans: React.FC = () => {
                                     fontSize: '2.5rem',
                                     color: 'white',
                                     textAlign: 'center',
-                                    backgroundSize: 'contain',
+                                    backgroundSize: !matches ? 'cover' : 'contain',
                                     backgroundRepeat: 'no-repeat',
                                     backgroundPosition: 'left'
                                 }} >
@@ -96,7 +96,7 @@ const Plans: React.FC = () => {
                                             width: !matches?'100%':'70%',
                                             height: '100%',
                                             display: 'flex',
-                                            padding: '4rem',
+                                            padding: !matches ? '1.5rem' : '4rem',
                                             flexDirection: 'column',
                                             gap: '1.5rem',
                                            overflow:'hidden',
@@ -112,7 +112,7 @@ const Plans: React.FC = () => {
                                             </div>
                                             <ul style={{
                                                 display: 'flex',
-                                                fontSize: matches?'15px':'10px',
+                                                fontSize: matches?'1.4vw':'14px',
                                                 flexDirection: 'column',
                                                 textAlign: 'left',
                                                 justifyContent:'center'
@@ -130,7 +130,7 @@ const Plans: React.FC = () => {
 
 
 
-                                </Stack>
+                                </div>
                             </SwiperSlide>
                         )
                     })}
