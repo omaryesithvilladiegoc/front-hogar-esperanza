@@ -112,7 +112,7 @@ const Plans: React.FC = () => {
                                             </div>
                                             <ul style={{
                                                 display: 'flex',
-                                                fontSize: matches?'1.4vw':'14px',
+                                                fontSize: matches?'1.4vw':'12px',
                                                 flexDirection: 'column',
                                                 textAlign: 'left',
                                                 justifyContent:'center'

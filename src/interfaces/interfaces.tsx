@@ -6,7 +6,7 @@ interface IUserContextType {
   uploadImage: (id: string, file: File) => Promise<any>;
   getPostById: (id: string) => Promise<any>;
   deletePostById:(id:string) => Promise<any>;
-  sendMailToUser:() => Promise<any>;
+  sendMailToUser:(userForm:ISendMailToUser) => Promise<any>;
 }
 
 interface Post {
@@ -22,4 +22,12 @@ interface Post {
   size: number;
 }
 
-export type { IUserContextType, Post };
+interface ISendMailToUser {
+  fullName:string,
+  email:string,
+  phone:string,
+  age:string,
+  plan:string
+}
+
+export type { IUserContextType, Post,ISendMailToUser };

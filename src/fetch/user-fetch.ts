@@ -5,6 +5,7 @@ const URL_FETCH = "http://localhost:3001";
 
 
 import Cookies from "js-cookie";
+import { ISendMailToUser } from "../interfaces/interfaces";
 
 export const loginFetch = async (email: string, password: string) => {
   try {
@@ -162,6 +163,28 @@ export async function getPostByIdFetch(id: string) {
   }
 }
 
-export async function sendMailToUserFetch():Promise<any> {
+export async function sendMailToUserFetch(userForm: ISendMailToUser): Promise<any> {
+  try {
+    const response = await fetch(`${URL_FETCH}/users-form`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json", // Cabecera necesaria para JSON
+      },
+      body: JSON.stringify(userForm),
+    });
 
+    // Verifica si la respuesta no es OK
+    if (!response.ok) {
+      const errorText = await response.text(); // Intenta obtener el mensaje de error del servidor
+      throw new Error(`Error al enviar el formulario: ${response.status} - ${errorText}`);
+    }
+
+    const data = await response.json(); // Analiza el JSON solo si la respuesta es válida
+    return data;
+  } catch (error) {
+    console.error("Error al enviar el formulario:", error);
+    throw error; // Lanza el error para que se maneje en la parte que llama esta función
+  }
 }
+

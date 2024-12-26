@@ -1,10 +1,12 @@
 "use client"
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import { Grid, Typography, TextField, Button, Box, Alert, Snackbar, CircularProgress, Select, MenuItem, FormControl, InputLabel, useMediaQuery } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import validationSchema from '../../validations/conteact.validation';
 import { fontCursive } from '@/config/fonts';
+import { UserContext } from '@/src/context/user';
+import { ISendMailToUser } from '@/src/interfaces/interfaces';
 
 function ContactSection() {
   const [alert, setAlert] = useState({ open: false, message: '', severity: '' });
@@ -12,23 +14,18 @@ function ContactSection() {
   const loaderRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
   const matches = useMediaQuery("(min-width:1130px)");
+  const {sendMailToUser} = useContext(UserContext)
 
   const handleClose = () => {
     setAlert({ ...alert, open: false });
   };
 
-  const handleSubmit = async (values: any, { resetForm }: any) => {
-    console.log('Formulario enviado:', values); // Imprime los datos del formulario en consola
-
+  const handleSubmit = async (values: ISendMailToUser, { resetForm }: any) => {
     setLoading(true);
-
     try {
-      // Aquí puedes hacer la lógica para enviar los datos al servidor o hacer algo más
-      // Por ejemplo, un fetch o axios para hacer una petición POST.
-      
-      // Si todo sale bien, puedes resetear el formulario.
+      const response = sendMailToUser(values)
       resetForm();
-      setAlert({ open: true, message: 'Formulario enviado correctamente', severity: 'success' });
+      setAlert({ open: true, message: 'Datos enviados. Revisa tu bandeja de correo electrónico o la carpeta de spam.', severity: 'success' });
     } catch (error) {
       console.error('Error al enviar el formulario', error);
       setAlert({ open: true, message: 'Hubo un error al enviar el formulario', severity: 'error' });

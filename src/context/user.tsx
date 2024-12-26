@@ -2,7 +2,7 @@ import { createContext } from "react";
 import React from "react";
 import Cookies from "js-cookie";
 
-import { IUserContextType } from "../interfaces/interfaces";
+import { ISendMailToUser, IUserContextType } from "../interfaces/interfaces";
 import {
   createPostFetch,
   deletePostByIdFetch,
@@ -47,9 +47,11 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     return true;
   };
 
-  const sendMailToUser = async ():Promise<any> => {
+  const sendMailToUser = async (userForm: ISendMailToUser):Promise<any> => {
     try {
-      const response = await sendMailToUserFetch()
+      const response = await sendMailToUserFetch(userForm)
+      if(!response) throw new Error('Hubo un error al enviar el formulario')
+      return response
     } catch (error) {
       throw error
     }
