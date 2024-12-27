@@ -47,7 +47,7 @@ const Home = () => {
         }}></span>
         </span>
     
-      <p className={fontRoboto.className} >Somos un hogar que brinda apoyo y amor a adultos mayores,
+      <p className={fontRoboto.className} >Somos un hogar para adultos mayores que brinda mucho apoyo y amor,
                  promoviendo su bienestar y ofreciendo un entorno seguro donde
                vivan con dignidad, alegría y propósito.</p>
       </Stack>

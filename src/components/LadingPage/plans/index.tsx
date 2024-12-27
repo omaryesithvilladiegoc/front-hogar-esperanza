@@ -37,7 +37,7 @@ const Plans: React.FC = () => {
 
 
     return (
-        <Box width={'95%'} margin={'0 auto'}>
+        <Box width={'95%'}  margin={'0 auto'}>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -155,6 +155,7 @@ const Plans: React.FC = () => {
                 justifyContent:'center',
                 alignItems:'center'
             }}>planes</h2>
+
             <Swiper
                 spaceBetween={30}
                 slidesPerView={matches ? 3 : 1}
@@ -162,6 +163,9 @@ const Plans: React.FC = () => {
                 onSwiper={(swiper) => console.log(swiper)}
                 modules={[Navigation]}
                 navigation
+                style={{
+                    height:'80vh'
+                }}
             >
 
                 {programs.map((plan,index) => {
@@ -195,6 +199,8 @@ const Plans: React.FC = () => {
 
 
             </Swiper>
+
+
         </Box>
     )
 }

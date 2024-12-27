@@ -51,7 +51,8 @@ const Footer = (props: Props) => {
     >
       <div
         style={{
-          width: "20%",
+          width: !matches ? "5%" : '20%',
+          padding: !matches ? '1rem' : '0rem'
         }}
       >
         <footer style={styles.footer}>
@@ -116,11 +117,11 @@ const Footer = (props: Props) => {
 
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3943.4151937128217!2d-75.87992228893836!3d8.746947308110782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x44b0757867fd66d3%3A0x996f2354c7159b2b!2sFundaci%C3%B3n%20Hogar%20Esperanza!5e0!3m2!1ses!2sco!4v1732630468236!5m2!1ses!2sco"
-        width={matches ? "50%" : "70%"}
+        width={matches ? "50%" : "90%"}
         height={!matches ? "200" : "500"}
         style={{
           border: "5px solid white inset",
-          transform: matches ? "translateY(-80px)" : "translateY(-120px)",
+          transform: matches ? "translateY(-80px)" : "translateY(-120px) translateX(-20px)",
           boxShadow: "2px solid gray",
           borderRadius: matches ? "25px" : "25px",
         }}
@@ -129,6 +130,8 @@ const Footer = (props: Props) => {
         referrerPolicy="no-referrer-when-downgrade"
         title="Google Map"
       ></iframe>
+
+      
     </div>
   );
 };
