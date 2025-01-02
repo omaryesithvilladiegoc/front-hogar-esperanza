@@ -26,7 +26,7 @@ export default function Donations({}: Props) {
       }}
     >
       <Stack
-        spacing={isDesktop ? 4 : 2}
+        spacing={isDesktop ? 4 : 4}
         sx={{
           width: isDesktop ? '70%' : '95%',
           textAlign: 'center',
@@ -34,21 +34,22 @@ export default function Donations({}: Props) {
           padding: isDesktop ? '2rem' : '1rem',
         }}
       >
-        <h1
+        <h2
           style={{
-            fontSize: isDesktop ? '4vw' : '6vw',
-            margin: 0,
+            fontSize: isDesktop ? '4vw' : '8vw',
             color: 'white',
             textShadow: '2px 2px 4px rgba(0,0,0,0.6)',
+            marginBottom:'1rem'
           }}
           className={fontRoboto.className}
         >
           ¡Gracias!
-        </h1>
+        </h2>
+
+
         <p
           style={{
             fontSize: isDesktop ? '1.5rem' : '1rem',
-            lineHeight: '1.8',
             color: 'white',
             textShadow: '1px 1px 3px rgba(0,0,0,0.5)',
             margin: 0,
@@ -60,6 +61,8 @@ export default function Donations({}: Props) {
           pequeña, hace una gran diferencia. Gracias por unirte a esta causa tan noble y por darles a quienes más lo
           necesitan una oportunidad de vivir con calidad y bienestar. ¡Juntos podemos hacer un mundo mejor!
         </p>
+
+
         <Link href="https://wa.me/3013743729" passHref>
           <Button
             variant="contained"
@@ -80,6 +83,7 @@ export default function Donations({}: Props) {
             Realiza tu donación aquí
           </Button>
         </Link>
+        
       </Stack>
     </Box>
   );
