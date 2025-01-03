@@ -33,6 +33,7 @@ const Plans: React.FC = () => {
     } ;
     const handleClose = () => setOpen(false);
     const matches = useMediaQuery("(min-width:800px)");
+    const medium = useMediaQuery("(min-width:400px)")
     const [slideInitial,setSlideInitial] = useState(programs.length)
 
 
@@ -51,7 +52,7 @@ const Plans: React.FC = () => {
                     style={{
                         display: 'flex',
                         flexDirection: 'column',
-                        height:matches ? '80%' : '75%',
+                        height:matches ? '90%' : '75%',
                         width:'90%',
                         overflow:'hidden',
                         justifyContent: 'center',
@@ -112,7 +113,7 @@ const Plans: React.FC = () => {
                                             </div>
                                             <ul style={{
                                                 display: 'flex',
-                                                fontSize: matches?'1.4vw':'12px',
+                                                fontSize: matches?'1.4vw': medium ? '2.5vw':'12px',
                                                 flexDirection: 'column',
                                                 textAlign: 'left',
                                                 justifyContent:'center'

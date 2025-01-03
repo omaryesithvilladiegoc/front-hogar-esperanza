@@ -24,14 +24,19 @@ type CoverPreviews = {
 };
 
 const PostsWithCoverSelector: React.FC = () => {
-  const { getAllPosts, uploadImage, deletePostById } = useContext(UserContext);
+  const { getAllPosts, uploadImage, deletePostById, fileExtraImagesUpload } = useContext(UserContext);
   const [posts, setPosts] = useState<Post[]>([]);
   const [coverPreviews, setCoverPreviews] = useState<CoverPreviews>({});
   const [page, setPage] = useState<number>(1);
   const [rowsPerPage] = useState<number>(5);
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [openExtraImagesModal, setOpenExtraImagesModal] = useState<boolean>(false);
   const [currentPostId, setCurrentPostId] = useState<string>("");
   const [currentImage, setCurrentImage] = useState<File | null>(null);
+  const [currentImageExtra, setCurrentImageExtra] = useState<File | null>(null);
+  const [currentImageExtra_2, setCurrentImageExtra_2] = useState<File | null>(null);
+
+
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -58,21 +63,6 @@ const PostsWithCoverSelector: React.FC = () => {
     }
   };
 
-  const handleSubmit = async (
-    postId: string,
-    event: React.FormEvent<HTMLFormElement>
-  ) => {
-    event.preventDefault();
-    const fileInput = document.getElementById(
-      `cover-${postId}`
-    ) as HTMLInputElement;
-    if (fileInput && fileInput.files?.[0]) {
-      const response = await uploadImage(postId, fileInput.files[0]);
-      alert(response.msg);
-    } else {
-      alert(`No file selected for post ${postId}`);
-    }
-  };
 
   const handleEditPost = (postId: string) => {
     setCurrentPostId(postId);
@@ -93,10 +83,36 @@ const PostsWithCoverSelector: React.FC = () => {
     }
   }
 
+  const handleAddExtraImages = async (id:string) => {
+   setCurrentPostId(id)
+   setOpenExtraImagesModal(true)
+  }
+
   const handleCloseModal = () => {
     setOpenModal(false);
     setCurrentPostId("");
     setCurrentImage(null);
+  };
+
+  const handleAddExtraImagesFetch = async (image1: File, image2: File) => {
+    try {
+      const response = await fileExtraImagesUpload(currentPostId,image1,image2)
+      if(response) {
+        alert(response.response)
+        
+      }
+    } catch (error) {
+      console.log(error);
+      
+    }
+    console.log("Image 1:", image1);
+    console.log("Image 2:", image2);
+  };
+  
+
+  const handleCloseExtraModal = () => {
+    setOpenExtraImagesModal(false);
+    setCurrentPostId("");
   };
 
   const handleImageUpload = async () => {
@@ -141,6 +157,7 @@ const PostsWithCoverSelector: React.FC = () => {
               <TableCell>Image</TableCell>
               <TableCell>Created At</TableCell>
               <TableCell>Actions</TableCell>
+              
             </TableRow>
           </TableHead>
           <TableBody>
@@ -183,6 +200,14 @@ const PostsWithCoverSelector: React.FC = () => {
                   >
                     Delete post
                   </Button>
+                  <Button
+                    onClick={() => handleAddExtraImages(post.id)}
+                    variant="outlined"
+                    color="secondary"
+                    sx={{ marginTop: "10px" }}
+                  >
+                    Add extra images
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}
@@ -221,6 +246,7 @@ const PostsWithCoverSelector: React.FC = () => {
             </Box>
           )}
         </DialogContent>
+
         <DialogActions>
           <Button onClick={handleCloseModal} color="primary">
             Cancel
@@ -228,8 +254,75 @@ const PostsWithCoverSelector: React.FC = () => {
           <Button onClick={handleImageUpload} color="primary">
             Save Changes
           </Button>
+          
         </DialogActions>
+
+
       </Dialog>
+
+     
+      <Dialog open={openExtraImagesModal} onClose={handleCloseExtraModal}>
+  <DialogTitle>Add Extra Images</DialogTitle>
+  <DialogContent>
+    {/* Input para la primera imagen */}
+    <input
+      type="file"
+      accept="image/*"
+      onChange={(e) => setCurrentImageExtra(e.target.files?.[0] ?? null)}
+      style={{ marginBottom: "10px" }}
+    />
+    {currentImageExtra && (
+      <Box sx={{ marginTop: "10px" }}>
+        <img
+          src={URL.createObjectURL(currentImageExtra)}
+          alt="Image preview 1"
+          style={{ width: "100px", height: "auto", borderRadius: "4px" }}
+        />
+      </Box>
+    )}
+
+    {/* Input para la segunda imagen */}
+    <input
+      type="file"
+      accept="image/*"
+      onChange={(e) => setCurrentImageExtra_2(e.target.files?.[0] ?? null)}
+      style={{ marginBottom: "10px" }}
+    />
+    {currentImageExtra_2 && (
+      <Box sx={{ marginTop: "10px" }}>
+        <img
+          src={URL.createObjectURL(currentImageExtra_2)}
+          alt="Image preview 2"
+          style={{ width: "100px", height: "auto", borderRadius: "4px" }}
+        />
+      </Box>
+    )}
+  </DialogContent>
+
+  <DialogActions>
+    <Button onClick={handleCloseExtraModal} color="primary">
+      Cancel
+    </Button>
+
+    {/* Botón que ejecuta la función si ambas imágenes están seleccionadas */}
+    <Button
+      onClick={() => {
+        if (currentImageExtra && currentImageExtra_2) {
+          handleAddExtraImagesFetch(currentImageExtra, currentImageExtra_2);
+        } else {
+          alert("Please select both images before saving.");
+        }
+      }}
+      color="primary"
+      disabled={!currentImageExtra || !currentImageExtra_2}
+    >
+      Save Changes
+    </Button>
+  </DialogActions>
+</Dialog>
+
+
+     
     </Box>
   );
 };

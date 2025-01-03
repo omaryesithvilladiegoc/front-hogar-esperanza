@@ -7,6 +7,7 @@ interface IUserContextType {
   getPostById: (id: string) => Promise<any>;
   deletePostById:(id:string) => Promise<any>;
   sendMailToUser:(userForm:ISendMailToUser) => Promise<any>;
+  fileExtraImagesUpload:(id:string,file1:File,file2:File) => Promise<any>
 }
 
 interface Post {

@@ -46,6 +46,8 @@ const BasicGrid:React.FC = () => {
     try {
       const post = await getPostById(id);
       setPostFound(post);
+      console.log(post);
+      
     } catch (error) {
       console.error(error);
     }

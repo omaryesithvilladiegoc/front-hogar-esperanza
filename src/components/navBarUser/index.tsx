@@ -337,29 +337,25 @@ const NavBarUser: React.FC = () => {
                 </Link>
 
                 {path === "/home-admin" && (
-                  <Button
-                    id="basic-button"
-                    aria-controls={open ? "basic-menu" : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? "true" : undefined}
-                    onClick={handleClick}
-                  >
-                    <Avatar {...stringAvatar("Manuel Florez")} />
-                  </Button>
-                )}
-                <Menu
-                  id="basic-menu"
-                  anchorEl={anchorEl}
-                  open={open}
-                  onClose={handleClose}
-                  MenuListProps={{
-                    "aria-labelledby": "basic-button",
-                  }}
+
+                  <Stack flexDirection={'row'} gap={'.5rem'}> <Button
+                  id="basic-button"
+                  aria-controls={open ? "basic-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={handleClick}
                 >
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={handleClose}>My account</MenuItem>
-                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                </Menu>
+                  <Avatar {...stringAvatar("Manuel Florez")} />
+                </Button> <Button
+                    id="basic-button"
+                    onClick={handleLogout}
+                  >
+                   Cerrar sesión
+                  </Button></Stack>
+                 
+                  
+                )}
+            
               </Stack>
             )}
           </Stack>

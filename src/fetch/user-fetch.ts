@@ -188,3 +188,39 @@ export async function sendMailToUserFetch(userForm: ISendMailToUser): Promise<an
   }
 }
 
+export async function fileExtraImagesUploadFetch(id: string, file1: File, file2: File) {
+  // Crear un FormData para enviar los archivos
+  const formData = new FormData();
+  formData.append("files", file1);
+  formData.append("files", file2);
+
+  // Obtener el token de las cookies
+  const token = Cookies.get("token");
+
+  try {
+    // Realizar la petición POST con fetch
+    const response = await fetch(
+      `${URL_FETCH}/file-upload/uploadExtraImages/${id}`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`, // Pasamos el token en los headers
+        },
+        body: formData, // El cuerpo es el FormData con las imágenes
+      }
+    );
+
+    // Comprobar si la respuesta es exitosa
+    if (!response.ok) {
+      throw new Error(`Error al subir las imágenes: ${response.statusText}`);
+    }
+
+    // Obtener la respuesta en formato JSON
+    const data = await response.json();
+    console.log("Imágenes subidas exitosamente:", data);
+    return data;
+  } catch (error) {
+    console.error("Error al hacer la petición:", error);
+  }
+}

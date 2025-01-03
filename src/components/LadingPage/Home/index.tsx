@@ -2,11 +2,13 @@
 import { fontCursive, fontRoboto } from "@/config/fonts"
 import { CircularProgress, Stack, Typography, useMediaQuery } from "@mui/material"
 import { Button } from "@nextui-org/button"
+import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 
 const Home = () => {
  const matches = useMediaQuery("(max-width:800px)");
  const [isMounted,setIsMounted] = useState(false)
+ const router = useRouter()
 
  useEffect(() => {
   setIsMounted(true)
@@ -52,7 +54,7 @@ const Home = () => {
                vivan con dignidad, alegría y propósito.</p>
       </Stack>
   
-      <Button className={fontRoboto.className} style={{
+      <Button onClick={() => router.push('/donaciones')} className={fontRoboto.className} style={{
         width:'60%',
         margin:'0 auto',
         color:'white',
