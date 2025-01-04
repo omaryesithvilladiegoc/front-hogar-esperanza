@@ -11,6 +11,7 @@ import { Stack, Typography, Button, useMediaQuery } from "@mui/material";
 import { Post } from "@/src/interfaces/interfaces";
 import SegmentIcon from "@mui/icons-material/Segment";
 import { ArrowCircleLeftOutlined } from "@mui/icons-material";
+import Image from "next/image";
 
 const splitContent = (content: string | undefined) => {
   if (!content) return null; // Maneja el caso donde el contenido sea undefined
@@ -33,7 +34,7 @@ const splitContent = (content: string | undefined) => {
   return formattedContent;
 };
 
-const BasicGrid:React.FC = () => {
+const BasicGrid: React.FC = () => {
   const [mounted, setMounted] = useState(false);
   const params = useParams();
   const idPost = params.postId as string;
@@ -47,7 +48,7 @@ const BasicGrid:React.FC = () => {
       const post = await getPostById(id);
       setPostFound(post);
       console.log(post);
-      
+
     } catch (error) {
       console.error(error);
     }
@@ -112,6 +113,8 @@ const BasicGrid:React.FC = () => {
                 backgroundPosition: "center",
                 height: "30rem",
                 padding: "1rem",
+                width: '87%',
+                margin: '0 auto'
               }}
             >
               <Stack
@@ -131,7 +134,7 @@ const BasicGrid:React.FC = () => {
                 >
                   {postFound?.title}
                 </Typography>
-               
+
               </Stack>
             </Card>
           )}
@@ -148,61 +151,81 @@ const BasicGrid:React.FC = () => {
               . Bogota, Colombia
             </Typography>
             <Typography
-                  variant="h2"
-                  style={{
-                    fontSize: matches ? "4rem" : "2.5rem",
-                    fontWeight: "bold",
-                    color: "white",
-                    textShadow: ".8px 1px 1px black",
-                  }}
-                >
-                  {postFound?.subtitle}
-                </Typography>
-            <Typography style={{ fontSize: "2.5rem" }}>
+              variant="h2"
+              style={{
+                fontSize: 'clamp(1.5rem, 2.5vw, 3rem)',
+                fontWeight: "bold",
+                color: "white",
+                textShadow: ".8px 1px 1px black",
+              }}
+            >
+              {postFound?.subtitle}
+            </Typography>
+            <Typography style={{ fontSize: "clamp(1.25rem, 2vw, 2.5rem"}}>
               {postFound?.header}
             </Typography>
 
-            {/* Dividiendo el contenido principal por oraciones */}
-            {postFound?.mainContent && (
-              <div
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "2rem",
-                }}
-              >
-                <Typography
-                  variant="body1"
-                  style={{ color: "white", fontSize: "1.8rem" }}
-                >
-                  {postFound?.subtitle}
-                </Typography>
-                <Typography
-                  width={"70%"}
-                  variant="body1"
+
+            <Stack>
+              {postFound?.mainContent && (
+                <div
                   style={{
-                    marginBottom: "1rem",
-                    textAlign: "justify",
-                    fontSize: "1.5rem",
-                    textIndent: "2rem",
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "2rem",
                   }}
                 >
-                  {splitContent(postFound?.mainContent)}
-                </Typography>
-              </div>
-            )}
+                  <Stack gap={2} flexDirection={matches ? 'row' : 'column-reverse'}>
+                    <Typography
+                      width={matches ? "75%" : '100%'}
+                      variant="body1"
+                      style={{
+                        marginBottom: "1rem",
+                        textAlign: "justify",
+                        fontSize: "1.5rem",
+                        textIndent: "2rem",
+                      }}
+                    >
+                      {splitContent(postFound?.mainContent)}
+                    </Typography>
+                    <Stack width={matches ? '75%' :'100%'} margin={'0 auto'} gap={2}>
 
+                      {postFound.extraImages && postFound.extraImages.slice(0, 2).map((image, index) => {
+                        return (<Image key={index} alt={image} src={image} width={500} height={200} />)
+                      })}
+
+                    </Stack>
+                  </Stack>
+
+                </div>
+              )}
+
+
+            </Stack>
+            {/* Dividiendo el contenido principal por oraciones */}
             {/* Lista de palabras clave */}
             <ul style={{ display: "flex", gap: "1.5rem", listStyle: "none" }}>
               {postFound?.keywords?.map((keyword, index) => (
-                <li key={index} style={{ color: "white" }}>
-                  {keyword}
+                <li key={index} style={{ color: "white",fontSize: 'clamp(0.9rem, 1.5vw, 1.2rem)',
+                  fontWeight: '500',
+                  backgroundColor: '#444',
+                  padding: '0.3rem 0.6rem',
+                  borderRadius: '8px',
+              }}>
+                  {keyword} 
                 </li>
               ))}
             </ul>
-
-            {postFound?.footer}
+              <p style={{ fontSize: "clamp(1.2rem, 2vw, 1.8rem)",
+    fontWeight: "500",
+    fontStyle: "italic",
+    color: "white",
+    textAlign: "justify",
+    marginTop: "2rem",
+    borderTop: "1px solid #ccc",
+    paddingTop: "1rem",}}>{postFound?.footer}</p>
+            
           </Stack>
         </Grid>
       </Grid>

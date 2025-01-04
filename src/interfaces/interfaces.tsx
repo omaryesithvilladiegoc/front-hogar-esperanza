@@ -21,6 +21,7 @@ interface Post {
   image: string;
   createdAt?: Date; // Fecha de creación del post
   size: number;
+  extraImages:string[]
 }
 
 interface ISendMailToUser {
