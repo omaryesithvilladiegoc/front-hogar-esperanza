@@ -126,10 +126,11 @@ const BasicGrid: React.FC = () => {
                 <Typography
                   variant="h1"
                   style={{
-                    fontSize: matches ? "4rem" : "2.5rem",
+                    fontSize: matches ? "3.5rem" : "2rem",
                     fontWeight: "bold",
                     color: "white",
                     textShadow: ".8px 1px 1px black",
+                    lineHeight:1.1
                   }}
                 >
                   {postFound?.title}
@@ -157,11 +158,12 @@ const BasicGrid: React.FC = () => {
                 fontWeight: "bold",
                 color: "white",
                 textShadow: ".8px 1px 1px black",
+                lineHeight:1.1
               }}
             >
               {postFound?.subtitle}
             </Typography>
-            <Typography style={{ fontSize: "clamp(1.25rem, 2vw, 2.5rem"}}>
+            <Typography style={{lineHeight:1.1, fontSize: "clamp(1.25rem, 2vw, 2.5rem"}}>
               {postFound?.header}
             </Typography>
 
@@ -174,17 +176,19 @@ const BasicGrid: React.FC = () => {
                     display: "flex",
                     flexDirection: "column",
                     gap: "2rem",
+                    
+                    
                   }}
                 >
                   <Stack gap={2} flexDirection={matches ? 'row' : 'column-reverse'}>
                     <Typography
-                      width={matches ? "75%" : '100%'}
+                      width={matches ? "100%" : '100%'}
                       variant="body1"
                       style={{
                         marginBottom: "1rem",
                         textAlign: "justify",
                         fontSize: "1.5rem",
-                        textIndent: "2rem",
+                        lineHeight:1.1
                       }}
                     >
                       {splitContent(postFound?.mainContent)}
@@ -192,7 +196,9 @@ const BasicGrid: React.FC = () => {
                     <Stack width={matches ? '75%' :'100%'} margin={'0 auto'} gap={2}>
 
                       {postFound.extraImages && postFound.extraImages.slice(0, 2).map((image, index) => {
-                        return (<Image key={index} alt={image} src={image} width={500} height={200} />)
+                        return (<Image style={{
+                          borderRadius:'15px'
+                        }} key={index} alt={image} src={image} width={500} height={200} />)
                       })}
 
                     </Stack>

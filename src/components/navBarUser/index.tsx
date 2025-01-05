@@ -9,6 +9,7 @@ import {
   Menu,
   MenuItem,
   Stack,
+  Typography,
   useMediaQuery,
 } from "@mui/material";
 import Link from "next/link";
@@ -89,17 +90,18 @@ const NavBarUser: React.FC = () => {
 
   const optionsDrawer = [
     {
-      link: "/posts",
-      icon: <NewspaperOutlinedIcon />,
-      color: "pink",
-      name: "Blog",
-    },
-    {
       link: "/",
       icon: <HomeOutlinedIcon />,
       color: "blue",
       name: "Inicio",
     },
+    {
+      link: "/posts",
+      icon: <NewspaperOutlinedIcon />,
+      color: "pink",
+      name: "Blog",
+    },
+
     {
       link: "#nosotros",
       icon: <InfoOutlinedIcon />,
@@ -176,9 +178,8 @@ const NavBarUser: React.FC = () => {
                     <Stack alignItems={"center"} gap={1} flexDirection={"row"}>
                       <div
                         style={{
-                          backgroundColor: element.color,
                           width: ".25rem",
-                          height: "4rem",
+                          height: "5.5rem",
                         }}
                       ></div>
                       <div
@@ -187,12 +188,26 @@ const NavBarUser: React.FC = () => {
                           justifyContent: "center",
                           alignItems: "center",
                           gap: "1rem",
+                          
                         }}
                       >
                         {element.icon}
-                        {element.name}
+                       <a className={fontRoboto.className}>{element.name}</a>
+                     
                       </div>
+                    
                     </Stack>
+                    <div style={
+                        {
+                          width:'100%',
+                          height:'.5px',
+                          backgroundColor:'white',
+                          position:'absolute'
+                          
+                        }
+                      }>
+
+                      </div>
                   </button>
                 );
               })}
@@ -210,7 +225,7 @@ const NavBarUser: React.FC = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.5)", // Sombra oscura
+            backgroundColor: "rgba(35, 133, 78, 0.5)", // Sombra oscura
             backdropFilter: "blur(7px)", // Difumina todo el fondo
             zIndex: 999, // Asegura que esté sobre otros elementos
           }}
@@ -226,7 +241,7 @@ const NavBarUser: React.FC = () => {
             zIndex: "1000",
             top:0,
             position:'sticky',
-            borderBottom: ".5px solid white",
+            // borderBottom: ".5px solid white",
           }}
           className={`${fontRoboto.className} animation-nav-bar`}
         >

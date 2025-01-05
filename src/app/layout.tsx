@@ -56,7 +56,7 @@ export default function RootLayout({
           <div
             style={{
            
-              paddingTop: "5rem",
+              paddingTop: ".5rem",
               paddingBottom:'10rem'
             }}
           >

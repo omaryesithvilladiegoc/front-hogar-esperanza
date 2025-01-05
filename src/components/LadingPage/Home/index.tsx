@@ -22,7 +22,7 @@ const Home = () => {
   }}><CircularProgress color='secondary' />Cargando, por favor espere...</span>)
  } else {
   return (<>
-    <Stack width={!matches ? '40%' : '95%'} gap={2} justifyContent={'center'} margin={'0 auto'} textAlign={'center'} color={'white'} flexDirection={'column'}>
+    <Stack height={'60dvh'} width={!matches ? '40%' : '95%'} gap={2} justifyContent={'center'} margin={'0 auto'} textAlign={'center'} color={'white'} flexDirection={'column'}>
       <h1 style={{
         fontSize:!matches?'5vw':'10vw',
         textAlign:'center',
