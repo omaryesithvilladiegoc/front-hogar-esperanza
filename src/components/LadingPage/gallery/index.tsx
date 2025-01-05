@@ -16,32 +16,17 @@ const imageProps = {
 };
 
 const additionalImages = [
-  'https://res.cloudinary.com/de5tm90td/image/upload/f_auto/q_auto/gallery/muiubqrj1bc5ma4dullt',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1776.jpg?alt=media&token=18c6d5a2-f1e1-450b-ae8a-6c9e841ebd9b',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1779.jpg?alt=media&token=666da207-e2ed-4d19-83ab-1aa3722b90b6',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1780.jpg?alt=media&token=176b198d-f47b-438c-bdac-fa934c706b2a',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1784.jpg?alt=media&token=c61c768f-e140-42de-9879-e1d62bb2dcf8',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1789.jpg?alt=media&token=eb9e1682-7788-4037-9b86-0682d050c0ad',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1825.jpg?alt=media&token=1571c627-0999-442e-a695-6ca6a71b2fe4',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1879.jpg?alt=media&token=2dc0abd8-3fa5-4878-b3eb-0fbeb91a805a',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1882.jpg?alt=media&token=44eebe07-998e-4ceb-afb6-7ddcbbc70e3f',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1886.jpg?alt=media&token=f744c30b-5b2f-4bbd-a70e-e0bcda41e70a',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1905.jpg?alt=media&token=a53fedb2-5374-4892-8cf8-3c1d6955c856',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1914.jpg?alt=media&token=8be1c50b-4caf-43ee-bd33-7be7adbd0307',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1917.jpg?alt=media&token=df980ef0-b5f5-4c42-80b6-157980f4f6ce',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1923.jpg?alt=media&token=8217a36b-cba1-48de-965e-f90c447ed145',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1939.jpg?alt=media&token=e105a488-e984-425c-8015-d28ce97a02af',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1946.jpg?alt=media&token=7ee8a274-34a2-4319-851f-c3003010781b',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1960.jpg?alt=media&token=b01612b4-2f14-4483-b19c-d542a358a5ad',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1962.jpg?alt=media&token=8088e301-d8a5-405b-8413-2ef7e3ca8bf1',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1979.jpg?alt=media&token=092a24bf-f20a-49c2-b9b2-daf6fa893f1e',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1984.jpg?alt=media&token=84fb8276-b2ef-4d44-a56e-c04d4480ffb8',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_1991.jpg?alt=media&token=81f73b6f-b029-4d37-9d87-e549225ca47a',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_2002.jpg?alt=media&token=c284bd6e-4c6e-4557-ab33-326bf04ffdb7',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_2015.jpg?alt=media&token=a3e70eca-1738-4b9c-a232-2ae9313f3921',
-  // 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2FIMG_2020.jpg?alt=media&token=ac692216-28d4-4d36-aac0-cc7b09512a6b'
-  
+  'https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/gallery/muiubqrj1bc5ma4dullt',
+  'https://res.cloudinary.com/de5tm90td/image/upload/q_auto,f_auto/v1736117381/gallery/WhatsApp_Image_2025-01-05_at_5.46.38_PM_1_uz1jd1.jpg',
+  'https://res.cloudinary.com/de5tm90td/image/upload/q_auto,f_auto/v1736117380/gallery/WhatsApp_Image_2025-01-05_at_5.46.38_PM_2_khf4sf.jpg',
+  'https://res.cloudinary.com/de5tm90td/image/upload/q_auto,f_auto/v1736117378/gallery/WhatsApp_Image_2025-01-05_at_5.46.38_PM_5_rldnt0.jpg',
+  'https://res.cloudinary.com/de5tm90td/image/upload/q_auto,f_auto/v1736117378/gallery/WhatsApp_Image_2025-01-05_at_5.46.38_PM_3_ntjmv6.jpg',
+  'https://res.cloudinary.com/de5tm90td/image/upload/q_auto,f_auto/v1736117378/gallery/WhatsApp_Image_2025-01-05_at_5.46.38_PM_4_iryu0b.jpg',
+  'https://res.cloudinary.com/de5tm90td/image/upload/q_auto,f_auto/v1736117377/gallery/WhatsApp_Image_2025-01-05_at_5.46.38_PM_7_yvtxd5.jpg',
+  'https://res.cloudinary.com/de5tm90td/image/upload/q_auto,f_auto/v1736117377/gallery/WhatsApp_Image_2025-01-05_at_5.46.38_PM_6_ybch4e.jpg',
+  'https://res.cloudinary.com/de5tm90td/image/upload/q_auto,f_auto/v1736117377/gallery/WhatsApp_Image_2025-01-05_at_5.46.38_PM_8_ugf4bl.jpg'
 ];
+
 
 const Gallery:React.FC = () => {
   const matches = useMediaQuery("(max-width:800px)");
@@ -155,7 +140,7 @@ const Gallery:React.FC = () => {
           m: 2,
           borderRadius: 1,
           maxWidth: '80vw',
-          maxHeight: '95vh',
+          maxHeight: '85vh',
           overflowY: 'auto'
         }}>
           <IconButton
