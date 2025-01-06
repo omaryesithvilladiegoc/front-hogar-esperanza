@@ -1,14 +1,14 @@
 "use client"
 
 import React, { useState } from 'react';
-import { Box, Button, Grid, Modal, IconButton, Typography, useMediaQuery } from "@mui/material";
+import { Box, Button, Modal, IconButton, Typography, useMediaQuery } from "@mui/material";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import CloseIcon from '@mui/icons-material/Close';
 import '@/styles/gallery.css';
+import Grid from '@mui/material/Grid2';
 import ViewAgendaIcon from '@mui/icons-material/ViewAgenda';
 import ViewColumnIcon from '@mui/icons-material/ViewColumn';
 import { fontRoboto } from '@/config/fonts';
-import { Padding } from '@mui/icons-material';
 
 const imageProps = {
   style: { width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px' },
@@ -46,7 +46,7 @@ const Gallery:React.FC = () => {
   return (
     <Box id="gallery"  className="gallery" sx={{  minHeight: '100vh', color: 'white', p: 5, display: 'flex', flexDirection: 'column' }}>
       <Grid container spacing={2} sx={{ flexGrow: 1, width:'100%',  height:'20rem', justifyContent:'center'}}>
-        <Grid item xs={12} sm={6} md={6} sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Grid  size={{xs:12,sm:6,md:6}}  sx={{ display: 'flex', flexDirection: 'column' }}>
           <div
             {...imageProps}
             className='animation-image'
@@ -61,7 +61,7 @@ const Gallery:React.FC = () => {
             }}
           ></div>
         </Grid>
-        <Grid item xs={12} sm={6} md={6} sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Grid size={{xs:12,sm:6,md:6}} sx={{ display: 'flex', flexDirection: 'column' }}>
 
         <div
             {...imageProps}
@@ -77,7 +77,7 @@ const Gallery:React.FC = () => {
             }}
           ></div>
         </Grid>
-        <Grid item xs={12} sm={6} md={8} sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Grid size={{xs:12,sm:6,md:8}} sx={{ display: 'flex', flexDirection: 'column' }}>
       
            <div
             {...imageProps}
@@ -93,7 +93,7 @@ const Gallery:React.FC = () => {
             }}
           ></div>
         </Grid>
-        <Grid item xs={12} sm={6} md={4} sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Grid size={{xs:12,sm:6,md:4}} sx={{ display: 'flex', flexDirection: 'column' }}>
        
 
 <div
@@ -141,7 +141,7 @@ const Gallery:React.FC = () => {
           borderRadius: 1,
           maxWidth: '80vw',
           maxHeight: '85vh',
-          overflowY: 'auto'
+          overflowY: 'auto',
         }}>
           <IconButton
             onClick={handleClose}
@@ -161,12 +161,13 @@ const Gallery:React.FC = () => {
          { gridSize === 6 ? < ViewColumnIcon  style={{  position:'fixed' }}/> : < ViewAgendaIcon  style={{  position:'fixed' }}/>}
 
           </Button>
-          <Grid style={{ height: '100vh' }} container spacing={1}>
+          <Grid style={{ height: '80dvh', width:'60dvw' }} container spacing={1}>
   {additionalImages.map((src, index) => (
-    <Grid item xs={12} sm={4} md={gridSize} key={index}>
+    <Grid size={{xs:12,sm:4, md:gridSize}}  key={index}>
       <div
       className='animation-image'
         style={{
+          
           background: `url('${src}')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
