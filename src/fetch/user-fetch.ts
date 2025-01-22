@@ -1,6 +1,6 @@
 
 // const URL_FETCH = "http://localhost:3001";
-export const URL_FETCH = "https://back-hogar-esperanza.onrender.com";
+export const URL_FETCH = "https://back-hogar-esperanza.onrender.com"
 
 
 import Cookies from "js-cookie";

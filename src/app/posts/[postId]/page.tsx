@@ -20,7 +20,7 @@ const splitContent = (content: string | undefined) => {
   const sentences = content
     .split(".")
     .map((sentence) => sentence.trim())
-    .filter((sentence) => sentence.length > 0);
+    .filter((sentence) => sentence.length > 50);
 
   return sentences.map((sentence, index) => {
     // Agregar un punto final a la oración

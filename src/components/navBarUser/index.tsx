@@ -283,7 +283,7 @@ const NavBarUser: React.FC = () => {
               <div onClick={() => router.push('/')} style={{height:'100%',display:'flex', flexDirection:'column',alignItems:'center',justifyContent:'center'}}>  <img
                   loading="lazy"
                   width={"30rem"}
-                  alt="hola"
+                  alt="logo"
                   src="https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/rfun93wlpk9dgtyuo7u2"
                 /></div>
             </div>
