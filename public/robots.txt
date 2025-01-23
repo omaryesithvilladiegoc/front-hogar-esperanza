@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.fundacionhogaresperanza.com
+
+# Sitemaps
+Sitemap: https://www.fundacionhogaresperanza.com/sitemap.xml
