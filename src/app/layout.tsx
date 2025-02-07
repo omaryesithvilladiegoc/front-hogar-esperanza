@@ -1,7 +1,6 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
-import Head from "next/head";
 
 import { Providers } from "../providers";
 import NavBarUser from "../components/navBarUser";
@@ -65,6 +64,9 @@ export const metadata: Metadata = {
     apple:
       "https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/rfun93wlpk9dgtyuo7u2",
   },
+  other: {
+    "google-adsense-account": "ca-pub-4478338988718379",
+  },
 };
 
 export const viewport: Viewport = {
@@ -81,9 +83,6 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="es">
-      <Head>
-        <meta content="ca-pub-4478338988718379" name="google-adsense-account" />
-      </Head>
       <body className={clsx("min-h-screen bg-background antialiased")}>
         <Providers>
           <NavBarUser />
