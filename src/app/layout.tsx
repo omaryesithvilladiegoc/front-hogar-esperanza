@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
+import Head from "next/head";
 
 import { Providers } from "../providers";
 import NavBarUser from "../components/navBarUser";
@@ -80,6 +81,9 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="es">
+      <Head>
+        <meta content="ca-pub-4478338988718379" name="google-adsense-account" />
+      </Head>
       <body className={clsx("min-h-screen bg-background antialiased")}>
         <Providers>
           <NavBarUser />
