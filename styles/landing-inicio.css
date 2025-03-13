@@ -1,14 +1,11 @@
-
 .heading-inicio {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* animation: mover .8s ease-in both;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* animation: mover .8s ease-in both;
     animation: trasladar linear both;
     animation-timeline: scroll(root block);
     animation-range: 0 200px;  */
-    
-    
 }
 .animation-out {
   /* animation: opacity 2s ease-in both;
@@ -18,20 +15,16 @@
 }
 
 @keyframes trasladar {
-    to{
-
-      opacity: 0;
-    }
+  to {
+    opacity: 0;
+  }
 }
-
 
 @keyframes opacity {
   0% {
     opacity: 0%;
   }
 }
-
-
 
 @keyframes mover {
   0% {

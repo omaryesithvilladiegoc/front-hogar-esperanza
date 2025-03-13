@@ -15,15 +15,13 @@ import Image from "next/image";
 import React from "react";
 import { UserContext } from "@/src/context/user";
 
-
 const NavbarComponent: React.FC = () => {
   const { logout } = useContext(UserContext);
 
   return (
     <Navbar isBordered>
       <NavbarContent>
-        <NavbarBrand className="mr-4">
-        </NavbarBrand>
+        <NavbarBrand className="mr-4"></NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-3" />
       </NavbarContent>
 
@@ -72,8 +70,6 @@ const NavbarComponent: React.FC = () => {
       </NavbarContent>
     </Navbar>
   );
-}
+};
 
-
-
-export default NavbarComponent
+export default NavbarComponent;

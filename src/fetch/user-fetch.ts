@@ -1,7 +1,5 @@
-
 // const URL_FETCH = "http://localhost:3001";
-export const URL_FETCH = "https://back-hogar-esperanza.onrender.com"
-
+export const URL_FETCH = "https://back-hogar-esperanza.onrender.com";
 
 import Cookies from "js-cookie";
 import { ISendMailToUser } from "../interfaces/interfaces";
@@ -42,7 +40,7 @@ export const createPostFetch = async (post: any) => {
     if (!response.ok) {
       // Manejar errores HTTP
       throw new Error(
-        `Error HTTP: ${response.status} - ${response.statusText}`
+        `Error HTTP: ${response.status} - ${response.statusText}`,
       );
     }
 
@@ -67,7 +65,7 @@ export const getAllPostFetch = async () => {
     if (!response.ok) {
       // Manejo de errores HTTP
       throw new Error(
-        `Error HTTP: ${response.status} - ${response.statusText}`
+        `Error HTTP: ${response.status} - ${response.statusText}`,
       );
     }
 
@@ -91,7 +89,7 @@ export const deletePostByIdFetch = async (id: string) => {
     if (!response.ok) {
       // Manejo de errores HTTP
       throw new Error(
-        `Error HTTP: ${response.status} - ${response.statusText}`
+        `Error HTTP: ${response.status} - ${response.statusText}`,
       );
     }
 
@@ -111,18 +109,15 @@ export async function uploadImageFetch(id: string, file: File) {
 
   try {
     // Realizar la petición POST con fetch
-    const response = await fetch(
-      `${URL_FETCH}/file-upload/uploadImage/${id}`,
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          Authorization: `Bearer ${token}`, // Pasamos el token en los headers
-        },
-        body: formData,
-        // Con cookies habilitadas por defecto, no necesitas hacer nada extra
-      }
-    );
+    const response = await fetch(`${URL_FETCH}/file-upload/uploadImage/${id}`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`, // Pasamos el token en los headers
+      },
+      body: formData,
+      // Con cookies habilitadas por defecto, no necesitas hacer nada extra
+    });
 
     // Comprobar si la respuesta es exitosa
     if (!response.ok) {
@@ -150,7 +145,7 @@ export async function getPostByIdFetch(id: string) {
     if (!response.ok) {
       // Manejo de errores HTTP
       throw new Error(
-        `Error HTTP: ${response.status} - ${response.statusText}`
+        `Error HTTP: ${response.status} - ${response.statusText}`,
       );
     }
 
@@ -162,7 +157,9 @@ export async function getPostByIdFetch(id: string) {
   }
 }
 
-export async function sendMailToUserFetch(userForm: ISendMailToUser): Promise<any> {
+export async function sendMailToUserFetch(
+  userForm: ISendMailToUser,
+): Promise<any> {
   try {
     const response = await fetch(`${URL_FETCH}/users-form`, {
       method: "POST",
@@ -176,7 +173,9 @@ export async function sendMailToUserFetch(userForm: ISendMailToUser): Promise<an
     // Verifica si la respuesta no es OK
     if (!response.ok) {
       const errorText = await response.text(); // Intenta obtener el mensaje de error del servidor
-      throw new Error(`Error al enviar el formulario: ${response.status} - ${errorText}`);
+      throw new Error(
+        `Error al enviar el formulario: ${response.status} - ${errorText}`,
+      );
     }
 
     const data = await response.json(); // Analiza el JSON solo si la respuesta es válida
@@ -187,7 +186,11 @@ export async function sendMailToUserFetch(userForm: ISendMailToUser): Promise<an
   }
 }
 
-export async function fileExtraImagesUploadFetch(id: string, file1: File, file2: File) {
+export async function fileExtraImagesUploadFetch(
+  id: string,
+  file1: File,
+  file2: File,
+) {
   // Crear un FormData para enviar los archivos
   const formData = new FormData();
   formData.append("files", file1);
@@ -207,7 +210,7 @@ export async function fileExtraImagesUploadFetch(id: string, file1: File, file2:
           Authorization: `Bearer ${token}`, // Pasamos el token en los headers
         },
         body: formData, // El cuerpo es el FormData con las imágenes
-      }
+      },
     );
 
     // Comprobar si la respuesta es exitosa

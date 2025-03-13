@@ -15,7 +15,6 @@ const Admin: React.FC = () => {
   return (
     <div
       style={{
-      
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -72,6 +71,6 @@ const Admin: React.FC = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Admin
+export default Admin;

@@ -1,26 +1,24 @@
-
 /* backgroundColor: "rgba(38,113,82,.8)", */
 
 .animation-nav-bar {
-    /* animation: scroll-nav-bar linear both;
+  /* animation: scroll-nav-bar linear both;
     animation-timeline: scroll(root block);
     animation-range: 0 200px; */
-    backdrop-filter: blur(7px);
-    font-size: 0.8rem;
-        height: 4rem;
-        justify-content: center;
-} 
+  backdrop-filter: blur(7px);
+  font-size: 0.8rem;
+  height: 4rem;
+  justify-content: center;
+}
 
 @keyframes scroll-nav-bar {
-    100% {
-        background-color: rgba(38,113,82,.8);
-        backdrop-filter: blur(7px);
-        font-size: 0.8rem;
-        height: 4rem;
-        justify-content: center;
-    }
+  100% {
+    background-color: rgba(38, 113, 82, 0.8);
+    backdrop-filter: blur(7px);
+    font-size: 0.8rem;
+    height: 4rem;
+    justify-content: center;
+  }
 }
 
 .mobile-drawer-options a {
-    
 }

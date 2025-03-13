@@ -109,7 +109,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     justifyContent: "center",
     alignItems: "center",
     height: "100vh",
-    
   },
   card: {
     background: "rgba(38,113,82,255)",

@@ -1,19 +1,18 @@
 .animationLogo {
-    animation-name: animationLogoEffect;
-    animation-duration: 2s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite; /* Si quieres que la animación se repita infinitamente */
+  animation-name: animationLogoEffect;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite; /* Si quieres que la animación se repita infinitamente */
+}
+
+@keyframes animationLogoEffect {
+  0% {
+    transform: scale(0.5); /* Comienza con el 50% del tamaño original */
   }
-  
-  @keyframes animationLogoEffect {
-    0% {
-      transform: scale(0.5); /* Comienza con el 50% del tamaño original */
-    }
-    50% {
-      transform: scale(0.8); /* Aumenta al 80% del tamaño original */
-    }
-    100% {
-      transform: scale(0.5); /* Vuelve al 50% */
-    }
+  50% {
+    transform: scale(0.8); /* Aumenta al 80% del tamaño original */
   }
-  
+  100% {
+    transform: scale(0.5); /* Vuelve al 50% */
+  }
+}

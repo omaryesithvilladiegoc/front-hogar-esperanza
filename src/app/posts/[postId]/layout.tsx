@@ -13,14 +13,13 @@ export async function generateMetadata({
   try {
     // Llama a tu API para obtener los datos del post
     const response = await fetch(`${URL_FETCH}/post/${postId}`, {
-        method: "GET", // Método GET para obtener los posts
-        headers: {
-          "Content-Type": "application/json", // Indicamos que es JSON
-        },
-      });
-  
-      const post =  await response.json()
-    
+      method: "GET", // Método GET para obtener los posts
+      headers: {
+        "Content-Type": "application/json", // Indicamos que es JSON
+      },
+    });
+
+    const post = await response.json();
 
     return {
       title: post.title || "Hogar Esperanza",
@@ -30,7 +29,9 @@ export async function generateMetadata({
         title: post.title,
         description: post.subtitle,
         url: `https://www.fundacionhogaresperanza.com/posts/${postId}`,
-        images: post.image ? [{ url: post.image, width: 800, height: 600 }] : [],
+        images: post.image
+          ? [{ url: post.image, width: 800, height: 600 }]
+          : [],
       },
     };
   } catch (error) {
@@ -48,9 +49,5 @@ export default function PostLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <main style={{  }}>
-      {children}
-    </main>
-  );
+  return <main style={{}}>{children}</main>;
 }

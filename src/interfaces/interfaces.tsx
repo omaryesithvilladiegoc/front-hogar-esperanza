@@ -5,9 +5,9 @@ interface IUserContextType {
   getAllPosts: () => Promise<any>;
   uploadImage: (id: string, file: File) => Promise<any>;
   getPostById: (id: string) => Promise<any>;
-  deletePostById:(id:string) => Promise<any>;
-  sendMailToUser:(userForm:ISendMailToUser) => Promise<any>;
-  fileExtraImagesUpload:(id:string,file1:File,file2:File) => Promise<any>
+  deletePostById: (id: string) => Promise<any>;
+  sendMailToUser: (userForm: ISendMailToUser) => Promise<any>;
+  fileExtraImagesUpload: (id: string, file1: File, file2: File) => Promise<any>;
 }
 
 interface Post {
@@ -21,15 +21,15 @@ interface Post {
   image: string;
   createdAt?: Date; // Fecha de creación del post
   size: number;
-  extraImages:string[]
+  extraImages: string[];
 }
 
 interface ISendMailToUser {
-  fullName:string,
-  email:string,
-  phone:string,
-  age:string,
-  plan:string
+  fullName: string;
+  email: string;
+  phone: string;
+  age: string;
+  plan: string;
 }
 
-export type { IUserContextType, Post,ISendMailToUser };
+export type { IUserContextType, Post, ISendMailToUser };

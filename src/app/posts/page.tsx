@@ -25,23 +25,21 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import SegmentIcon from "@mui/icons-material/Segment";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import { MailOutline, ThumbUp } from '@mui/icons-material'; // Importar iconos de MUI
-
-
+import { MailOutline, ThumbUp } from "@mui/icons-material"; // Importar iconos de MUI
 
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  bgcolor: "background.paper",
+  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
 
-const BasicGrid:React.FC = () =>{
+const BasicGrid: React.FC = () => {
   // Estado para asegurarnos de que se renderiza solo en el cliente
   const [mounted, setMounted] = useState(false);
   const [samplePosts, setSamplePosts] = useState<Post[]>([]);
@@ -50,26 +48,22 @@ const BasicGrid:React.FC = () =>{
   const router = useRouter();
   const token = Cookies.get("token");
   const [open, setOpen] = useState(false);
-  const [selectedLike, setSelectedLike] = useState('')
+  const [selectedLike, setSelectedLike] = useState("");
   const [captchaVerified, setCaptchaVerified] = useState(false);
-  const [email, setEmail] = useState('');
-
+  const [email, setEmail] = useState("");
 
   const handleClose = () => setOpen(false);
 
-  const handleOpen = (id:string) => {
+  const handleOpen = (id: string) => {
     setSelectedLike(id);
     setOpen(true);
-    
-
-  } 
+  };
 
   // Función para manejar el envío del formulario
-  const handleSubmit = (e:any) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     alert(`Correo enviado: ${email}`);
   };
-
 
   // 75664
   // Usamos useEffect para evitar el renderizado en el servidor
@@ -103,12 +97,16 @@ const BasicGrid:React.FC = () =>{
         alignItems: "start",
         color: "white",
         height: "100%",
-        width:'92%',
-        margin:'0 auto'
+        width: "92%",
+        margin: "0 auto",
       }}
     >
-
-      {samplePosts.length === 0 && <> <CircularProgress color='success'/> </>}
+      {samplePosts.length === 0 && (
+        <>
+          {" "}
+          <CircularProgress color="success" />{" "}
+        </>
+      )}
 
       {!(samplePosts.length === 0) && (
         <>
@@ -178,11 +176,10 @@ const BasicGrid:React.FC = () =>{
                         pointerEvents: "auto", // Esta línea asegura que el div pueda recibir clics
                       }}
                       onClick={(e) => {
-                        e.stopPropagation(); 
-                        handleOpen(post.id);   // Detiene la propagación del clic hacia el elemento padre
+                        e.stopPropagation();
+                        handleOpen(post.id); // Detiene la propagación del clic hacia el elemento padre
                         // Aquí pones tu lógica de clic para el div
                       }}
-                      
                     >
                       <FavoriteBorderOutlinedIcon
                         style={{ fontSize: "1.3rem" }}
@@ -208,96 +205,111 @@ const BasicGrid:React.FC = () =>{
             ))}
           </Grid>
           <Modal
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
-      <Box sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '500px',
-        backgroundColor: 'white',
-        padding: '40px',
-        borderRadius: '8px',
-        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)',
-        textAlign: 'center',
-        margin: 'auto',
-        maxWidth: '90%',
-        marginTop: '20vh',
-      }}>
-        <h2 style={{ fontSize: '26px', fontWeight: 'bold', marginBottom: '20px' }}>
-          Agradecemos tu colaboración
-        </h2>
-        <p style={{ fontSize: '18px', color: '#555', marginBottom: '30px' }}>
-          Déjanos tu correo para guardar tu like
-        </p>
-        
-        <form style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '20px',
-          width: '100%',
-        }} onSubmit={handleSubmit}>
-          
-          {/* Campo de correo con icono */}
-          <TextField
-            type="email"
-            placeholder="Ingresa tu email"
-            fullWidth
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <MailOutline style={{ color: '#264227' }} />
-                </InputAdornment>
-              ),
-            }}
-            variant="outlined"
-            style={{
-              padding: '14px',
-              fontSize: '18px',
-              width: '100%',
-              boxSizing: 'border-box',
-            }}
-            onFocus={(e) => e.target.style.borderColor = '#4CAF50'}
-            onBlur={(e) => e.target.style.borderColor = '#ccc'}
-          />
-          
-      
-          {/* Botón de envío con icono de like */}
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            style={{
-              padding: '12px 20px',
-              marginTop: '15px',
-              backgroundColor: '#264227',
-              color: '#fff',
-              borderRadius: '5px',
-              fontSize: '16px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-            }}
-            disabled={!captchaVerified} // Deshabilitar el botón si no se ha verificado el captcha
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
           >
-            <ThumbUp style={{ fontSize: '20px' }} />
-            Enviar
-          </Button>
-        </form>
-      </Box>
-    </Modal>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "500px",
+                backgroundColor: "white",
+                padding: "40px",
+                borderRadius: "8px",
+                boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+                textAlign: "center",
+                margin: "auto",
+                maxWidth: "90%",
+                marginTop: "20vh",
+              }}
+            >
+              <h2
+                style={{
+                  fontSize: "26px",
+                  fontWeight: "bold",
+                  marginBottom: "20px",
+                }}
+              >
+                Agradecemos tu colaboración
+              </h2>
+              <p
+                style={{
+                  fontSize: "18px",
+                  color: "#555",
+                  marginBottom: "30px",
+                }}
+              >
+                Déjanos tu correo para guardar tu like
+              </p>
+
+              <form
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "20px",
+                  width: "100%",
+                }}
+                onSubmit={handleSubmit}
+              >
+                {/* Campo de correo con icono */}
+                <TextField
+                  type="email"
+                  placeholder="Ingresa tu email"
+                  fullWidth
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <MailOutline style={{ color: "#264227" }} />
+                      </InputAdornment>
+                    ),
+                  }}
+                  variant="outlined"
+                  style={{
+                    padding: "14px",
+                    fontSize: "18px",
+                    width: "100%",
+                    boxSizing: "border-box",
+                  }}
+                  onFocus={(e) => (e.target.style.borderColor = "#4CAF50")}
+                  onBlur={(e) => (e.target.style.borderColor = "#ccc")}
+                />
+
+                {/* Botón de envío con icono de like */}
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  style={{
+                    padding: "12px 20px",
+                    marginTop: "15px",
+                    backgroundColor: "#264227",
+                    color: "#fff",
+                    borderRadius: "5px",
+                    fontSize: "16px",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                  }}
+                  disabled={!captchaVerified} // Deshabilitar el botón si no se ha verificado el captcha
+                >
+                  <ThumbUp style={{ fontSize: "20px" }} />
+                  Enviar
+                </Button>
+              </form>
+            </Box>
+          </Modal>
         </>
       )}
     </div>
   );
-}
+};
 
 export default BasicGrid;

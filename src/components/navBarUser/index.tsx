@@ -20,11 +20,11 @@ import { useParams, usePathname, useRouter } from "next/navigation";
 import { UserContext } from "@/src/context/user";
 import { fontCursive, fontRoboto } from "@/config/fonts";
 import "@/styles/nav-bar.css";
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import NewspaperOutlinedIcon from '@mui/icons-material/NewspaperOutlined';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import PhoneEnabledOutlinedIcon from '@mui/icons-material/PhoneEnabledOutlined';
-import VolunteerActivismOutlinedIcon from '@mui/icons-material/VolunteerActivismOutlined';
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import NewspaperOutlinedIcon from "@mui/icons-material/NewspaperOutlined";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import PhoneEnabledOutlinedIcon from "@mui/icons-material/PhoneEnabledOutlined";
+import VolunteerActivismOutlinedIcon from "@mui/icons-material/VolunteerActivismOutlined";
 
 const NavBarUser: React.FC = () => {
   const [mounted, setMounted] = useState(false);
@@ -188,26 +188,20 @@ const NavBarUser: React.FC = () => {
                           justifyContent: "center",
                           alignItems: "center",
                           gap: "1rem",
-                          
                         }}
                       >
                         {element.icon}
-                       <a className={fontRoboto.className}>{element.name}</a>
-                     
+                        <a className={fontRoboto.className}>{element.name}</a>
                       </div>
-                    
                     </Stack>
-                    <div style={
-                        {
-                          width:'100%',
-                          height:'.5px',
-                          backgroundColor:'white',
-                          position:'absolute'
-                          
-                        }
-                      }>
-
-                      </div>
+                    <div
+                      style={{
+                        width: "100%",
+                        height: ".5px",
+                        backgroundColor: "white",
+                        position: "absolute",
+                      }}
+                    ></div>
                   </button>
                 );
               })}
@@ -239,8 +233,8 @@ const NavBarUser: React.FC = () => {
             width: "100%",
             height: "5rem",
             zIndex: "1000",
-            top:0,
-            position:'sticky',
+            top: 0,
+            position: "sticky",
             // borderBottom: ".5px solid white",
           }}
           className={`${fontRoboto.className} animation-nav-bar`}
@@ -263,7 +257,7 @@ const NavBarUser: React.FC = () => {
                   width: "50%",
                   display: "flex",
                   justifyContent: "space-between",
-                  alignItems:'center'
+                  alignItems: "center",
                 }}
               >
                 <div
@@ -276,16 +270,25 @@ const NavBarUser: React.FC = () => {
                 >
                   <MenuIcon style={{ fontSize: "2.5rem", cursor: "pointer" }} />
                 </div>
-
-
-              
               </div>
-              <div onClick={() => router.push('/')} style={{height:'100%',display:'flex', flexDirection:'column',alignItems:'center',justifyContent:'center'}}>  <img
+              <div
+                onClick={() => router.push("/")}
+                style={{
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {" "}
+                <img
                   loading="lazy"
                   width={"30rem"}
                   alt="logo"
                   src="https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/rfun93wlpk9dgtyuo7u2"
-                /></div>
+                />
+              </div>
             </div>
           )}
 
@@ -311,7 +314,10 @@ const NavBarUser: React.FC = () => {
                   alt="hola"
                   src="https://res.cloudinary.com/de5tm90td/image/upload/f_auto,q_auto/v1/assets/rfun93wlpk9dgtyuo7u2"
                 />
-                <h3 className={fontCursive.className} style={{ color: "white" }}>
+                <h3
+                  className={fontCursive.className}
+                  style={{ color: "white" }}
+                >
                   hogar esperanza
                 </h3>
               </div>
@@ -333,9 +339,7 @@ const NavBarUser: React.FC = () => {
                 <Link href="/posts">Blog</Link>
 
                 <Link href="/">Inicio</Link>
-                <Link href="#mision">
-                  Nosotros
-                </Link>
+                <Link href="#mision">Nosotros</Link>
                 <Link
                   style={{
                     backgroundColor: "#164d34",
@@ -347,30 +351,25 @@ const NavBarUser: React.FC = () => {
                 >
                   Donaciones
                 </Link>
-                <Link href="#contacto">
-                  Contacto
-                </Link>
+                <Link href="#contacto">Contacto</Link>
 
                 {path === "/home-admin" && (
-
-                  <Stack flexDirection={'row'} gap={'.5rem'}> <Button
-                  id="basic-button"
-                  aria-controls={open ? "basic-menu" : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={open ? "true" : undefined}
-                  onClick={handleClick}
-                >
-                  <Avatar {...stringAvatar("Manuel Florez")} />
-                </Button> <Button
-                    id="basic-button"
-                    onClick={handleLogout}
-                  >
-                   Cerrar sesión
-                  </Button></Stack>
-                 
-                  
+                  <Stack flexDirection={"row"} gap={".5rem"}>
+                    {" "}
+                    <Button
+                      id="basic-button"
+                      aria-controls={open ? "basic-menu" : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? "true" : undefined}
+                      onClick={handleClick}
+                    >
+                      <Avatar {...stringAvatar("Manuel Florez")} />
+                    </Button>{" "}
+                    <Button id="basic-button" onClick={handleLogout}>
+                      Cerrar sesión
+                    </Button>
+                  </Stack>
                 )}
-            
               </Stack>
             )}
           </Stack>

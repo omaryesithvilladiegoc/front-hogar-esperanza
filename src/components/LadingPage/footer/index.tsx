@@ -1,7 +1,13 @@
 "use client";
 
 import { fontRoboto } from "@/config/fonts";
-import { Facebook, Instagram, Spa, Twitter, WhatsApp } from "@mui/icons-material";
+import {
+  Facebook,
+  Instagram,
+  Spa,
+  Twitter,
+  WhatsApp,
+} from "@mui/icons-material";
 import {
   Stack,
   Typography,
@@ -14,7 +20,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-interface Props {};
+interface Props {}
 
 const socialMedia = [
   {
@@ -51,8 +57,8 @@ const Footer = (props: Props) => {
     >
       <div
         style={{
-          width: !matches ? "5%" : '20%',
-          padding: !matches ? '1rem' : '0rem'
+          width: !matches ? "5%" : "20%",
+          padding: !matches ? "1rem" : "0rem",
         }}
       >
         <footer style={styles.footer}>
@@ -62,7 +68,6 @@ const Footer = (props: Props) => {
             alignItems={"baseline"}
             flexDirection={"column"}
             width={"30rem"}
-          
           >
             <img
               loading="lazy"
@@ -72,12 +77,10 @@ const Footer = (props: Props) => {
               style={{ maxWidth: "100%", height: "auto" }}
             />
             <h5 className={fontRoboto.className}>Fundacion Hogar Esperanza</h5>
-            <h6  className={fontRoboto.className}>
+            <h6 className={fontRoboto.className}>
               Cl. 24 #15 - 90, Montería, Córdoba
             </h6>
-            <p className={fontRoboto.className}>
-              3013743729
-            </p>
+            <p className={fontRoboto.className}>3013743729</p>
 
             <Stack width={"100%"} flexDirection={"row"} gap={2}>
               {socialMedia.map((element) => {
@@ -93,7 +96,13 @@ const Footer = (props: Props) => {
                     }}
                     key={element.name}
                   >
-                    {element.icon} {matches && <span className={fontRoboto.className}> {element.name}</span>}
+                    {element.icon}{" "}
+                    {matches && (
+                      <span className={fontRoboto.className}>
+                        {" "}
+                        {element.name}
+                      </span>
+                    )}
                   </CardActionArea>
                 );
               })}
@@ -108,7 +117,11 @@ const Footer = (props: Props) => {
               }}
             />
 
-            <Stack className={fontRoboto.className} gap={"1rem"} alignItems={"baseline"}>
+            <Stack
+              className={fontRoboto.className}
+              gap={"1rem"}
+              alignItems={"baseline"}
+            >
               <Link href={"/privacity"}>Política de Privacidad</Link>
             </Stack>
           </Stack>
@@ -121,7 +134,9 @@ const Footer = (props: Props) => {
         height={!matches ? "200" : "500"}
         style={{
           border: "5px solid white inset",
-          transform: matches ? "translateY(-80px)" : "translateY(-120px) translateX(-20px)",
+          transform: matches
+            ? "translateY(-80px)"
+            : "translateY(-120px) translateX(-20px)",
           boxShadow: "2px solid gray",
           borderRadius: matches ? "25px" : "25px",
         }}
@@ -130,8 +145,6 @@ const Footer = (props: Props) => {
         referrerPolicy="no-referrer-when-downgrade"
         title="Google Map"
       ></iframe>
-
-      
     </div>
   );
 };

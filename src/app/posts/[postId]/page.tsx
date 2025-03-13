@@ -157,8 +157,10 @@ const BasicGrid: React.FC = () => {
             <Stack gap={4} color={"white"}>
               <Typography fontSize={"1.2rem"} variant="body2">
                 El post fue creado el{" "}
-                {new Date(postFound?.createdAt as string | number | Date).toLocaleString()}.
-                Bogotá, Colombia
+                {new Date(
+                  postFound?.createdAt as string | number | Date,
+                ).toLocaleString()}
+                . Bogotá, Colombia
               </Typography>
               <Typography
                 variant="h2"
@@ -192,7 +194,10 @@ const BasicGrid: React.FC = () => {
                       gap: "2rem",
                     }}
                   >
-                    <Stack gap={2} flexDirection={matches ? "row" : "column-reverse"}>
+                    <Stack
+                      gap={2}
+                      flexDirection={matches ? "row" : "column-reverse"}
+                    >
                       <Typography
                         width={matches ? "100%" : "100%"}
                         variant="body1"
@@ -205,22 +210,28 @@ const BasicGrid: React.FC = () => {
                       >
                         {splitContent(postFound?.mainContent)}
                       </Typography>
-                      <Stack width={matches ? "75%" : "100%"} margin={"0 auto"} gap={2}>
+                      <Stack
+                        width={matches ? "75%" : "100%"}
+                        margin={"0 auto"}
+                        gap={2}
+                      >
                         {postFound.extraImages &&
-                          postFound.extraImages.slice(0, 2).map((image, index) => {
-                            return (
-                              <Image
-                                style={{
-                                  borderRadius: "15px",
-                                }}
-                                key={index}
-                                alt={image}
-                                src={image}
-                                width={500}
-                                height={200}
-                              />
-                            );
-                          })}
+                          postFound.extraImages
+                            .slice(0, 2)
+                            .map((image, index) => {
+                              return (
+                                <Image
+                                  style={{
+                                    borderRadius: "15px",
+                                  }}
+                                  key={index}
+                                  alt={image}
+                                  src={image}
+                                  width={500}
+                                  height={200}
+                                />
+                              );
+                            })}
                       </Stack>
                     </Stack>
                   </div>

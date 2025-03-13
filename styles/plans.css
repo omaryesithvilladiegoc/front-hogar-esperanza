@@ -1,19 +1,20 @@
-.swiper-button-next, .swiper-button-prev {
-    color: white; 
-  }
+.swiper-button-next,
+.swiper-button-prev {
+  color: white;
+}
 
-  .swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
-    color: white;
-    width: 100%;
-    justify-content: center;
-    display: flex;
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after {
+  color: white;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
 
-  }
-
- 
-  .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
-    color: white;
-    width: 100%;
-    justify-content: center;
-    display: flex;
-  }
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
+  color: white;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}

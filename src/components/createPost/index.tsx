@@ -179,7 +179,7 @@ const CreatePost: React.FC = () => {
     keywords: [],
   });
   const [errors, setErrors] = useState<{ [key in keyof FormData]?: string }>(
-    {}
+    {},
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -228,7 +228,7 @@ const CreatePost: React.FC = () => {
     "¿Dónde encontrar apoyo para el cuidado de un adulto mayor?",
     "Enfermería",
     "Servicios sociales",
-];
+  ];
 
   const numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
@@ -257,7 +257,7 @@ const CreatePost: React.FC = () => {
 
   // Manejar cambios en los campos del formulario
   const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
 

@@ -11,8 +11,7 @@ import {
   loginFetch,
   sendMailToUserFetch,
   uploadImageFetch,
-  fileExtraImagesUploadFetch
-  
+  fileExtraImagesUploadFetch,
 } from "../fetch/user-fetch";
 
 export const UserContext = createContext<IUserContextType>({
@@ -24,7 +23,7 @@ export const UserContext = createContext<IUserContextType>({
   getPostById: async () => null,
   deletePostById: async () => null,
   sendMailToUser: async () => null,
-  fileExtraImagesUpload: async () => null
+  fileExtraImagesUpload: async () => null,
 });
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
@@ -49,25 +48,29 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     return true;
   };
 
-  const sendMailToUser = async (userForm: ISendMailToUser):Promise<any> => {
+  const sendMailToUser = async (userForm: ISendMailToUser): Promise<any> => {
     try {
-      const response = await sendMailToUserFetch(userForm)
-      if(!response) throw new Error('Hubo un error al enviar el formulario')
-      return response
+      const response = await sendMailToUserFetch(userForm);
+      if (!response) throw new Error("Hubo un error al enviar el formulario");
+      return response;
     } catch (error) {
-      throw error
+      throw error;
     }
-  }
+  };
 
-  const fileExtraImagesUpload = async (id: string, file1: File, file2:File) => {
+  const fileExtraImagesUpload = async (
+    id: string,
+    file1: File,
+    file2: File,
+  ) => {
     try {
-      const response = await fileExtraImagesUploadFetch(id,file1,file2)
-      if(!response) throw new Error('Hubo un error al añadir las imagenes')
-        return response
+      const response = await fileExtraImagesUploadFetch(id, file1, file2);
+      if (!response) throw new Error("Hubo un error al añadir las imagenes");
+      return response;
     } catch (error) {
-      throw error
+      throw error;
     }
-  }
+  };
 
   const getAllPosts = async () => {
     try {
@@ -111,15 +114,14 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
   const deletePostById = async (id: string) => {
     try {
-      const response = deletePostByIdFetch(id)
-      console.log(response);      
-      return response
-    } catch (error:any) {
-      alert(error.message)
-      throw error
+      const response = deletePostByIdFetch(id);
+      console.log(response);
+      return response;
+    } catch (error: any) {
+      alert(error.message);
+      throw error;
     }
-  }
-
+  };
 
   return (
     <UserContext.Provider
@@ -132,7 +134,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
         getPostById,
         deletePostById,
         sendMailToUser,
-        fileExtraImagesUpload
+        fileExtraImagesUpload,
       }}
     >
       {children}
