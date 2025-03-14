@@ -43,6 +43,7 @@ const Home = () => {
           autoPlay
           loop
           muted
+          playsInline // Añadido para soporte en iOS
           src="/videoPromotion.mp4"
           style={{
             position: "absolute",
